@@ -5,31 +5,93 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sticky Scratchpad</title>
     <style>
-        body { font-family: monospace; background-color: transparent; margin: 0; padding: 10px; display: flex; justify-content: center; align-items: center; }
-        .scratchpad-container { width: 100%; max-width: 450px; background-color: #f8d7da; border: 3px solid #000000; border-radius: 5px; box-shadow: 4px 4px 0px 0px #000000; padding: 15px; box-sizing: border-box; }
-        .header { font-family: monospace; font-variant-caps: all-petite-caps; font-size: 1.6em; font-weight: bold; border-bottom: 2px dashed #000000; padding-bottom: 5px; margin-bottom: 10px; display: flex; justify-content: center; align-items: center; }
-        textarea { width: 100%; height: 180px; border: none; background: transparent; font-family: monospace; font-size: 1.1em; line-height: 1.5; resize: none; outline: none; padding: 0; margin: 0; color: #000000; }
-        .status { font-size: 0.8em; color: #555555; text-align: right; margin-top: 5px; font-style: italic; }
+        body {
+            font-family: monospace;
+            background-color: transparent;
+            margin: 0;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .scratchpad-container {
+            width: 100%;
+            max-width: 450px;
+            background-color: #f8d7da; /* Blush Pink */
+            border: 3px solid #000000;
+            border-radius: 5px;
+            box-shadow: 4px 4px 0px 0px #000000;
+            padding: 15px;
+            box-sizing: border-box;
+        }
+
+        .header {
+            font-family: monospace;
+            font-variant-caps: all-petite-caps;
+            font-size: 1.7em; /* Made 1pt size larger */
+            font-weight: bold;
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* Removed border-bottom line */
+        }
+
+        textarea {
+            width: 100%;
+            height: 180px;
+            border: none;
+            background: transparent;
+            font-family: monospace;
+            font-size: 1.1em;
+            line-height: 1.5;
+            resize: none;
+            outline: none;
+            padding: 0;
+            margin: 0;
+            color: #000000;
+        }
+
+        .status {
+            font-size: 0.8em;
+            color: #555555;
+            text-align: right;
+            margin-top: 5px;
+            font-style: italic;
+        }
     </style>
 </head>
 <body>
+
 <div class="scratchpad-container">
-    <div class="header"><span>-  N O T E S  -</span></div>
+    <div class="header">
+        <span>-  N O T E S  -</span>
+    </div>
     <textarea id="noteArea" placeholder="Type quick notes..."></textarea>
     <div class="status" id="statusMessage">Saved</div>
 </div>
+
 <script>
     const noteArea = document.getElementById('noteArea');
     const statusMessage = document.getElementById('statusMessage');
+
     window.addEventListener('DOMContentLoaded', () => {
         const savedNote = localStorage.getItem('notion_sticky_note');
-        if (savedNote) { noteArea.value = savedNote; }
+        if (savedNote) {
+            noteArea.value = savedNote;
+        }
     });
+
     noteArea.addEventListener('input', () => {
         statusMessage.textContent = "Typing...";
         localStorage.setItem('notion_sticky_note', noteArea.value);
-        setTimeout(() => { statusMessage.textContent = "Saved"; }, 500);
+        setTimeout(() => {
+            statusMessage.textContent = "Saved";
+        }, 500);
     });
 </script>
+
 </body>
 </html>
