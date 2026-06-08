@@ -5,10 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Transparent Lyric Matrix</title>
     
-    <!-- Importing custom Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Special+Elite&family=Sedgwick+Ave&family=Bungee&family=Space+Mono:wght@700&family=Fredericka+the+Great&family=VT323&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Cinzel:wght@600&family=Special+Elite&family=Sedgwick+Ave&family=Bungee&family=Space+Mono:wght@700&family=Fredericka+the+Great&family=VT323&display=swap" rel="stylesheet">
 
     <style>
         html, body {
@@ -19,6 +18,7 @@
             justify-content: center;
             align-items: center;
             overflow: hidden;
+            height: 100vh;
         }
 
         .lyric-container {
@@ -82,17 +82,17 @@
             { 
                 text: "OH, SILLY ME. THAT'S JUST ME.", 
                 artist: "KURT VILE",
-                font: "'Fredericka the Great', cursive", 
+                font: "'Architects Daughter', cursive", 
                 textColor: "#1800ad" // Deep blue
             },
             { 
-                text: "I WOKE UP THIS MORNING, DIDN'T RECOGNIZE THE MAN IN THE MIRROR. THEN I LAUGHED AND I SAID, 'OH SILLY ME, THAT'S JUST ME.'", 
+                text: "Wakin', the dawn of day, And I gotta think about what I wanna say...", 
                 artist: "KURT VILE",
                 font: "'Space Mono', monospace", 
                 textColor: "#666666" // Neutral gray
             },
             {
-                text: "WHEN THE WORK DAY IS LONGER THAN REASON ALLOWS, YOU JUST DANCE IN THE KITCHEN 'TIL THE ROOSTER TELLS THE COWS.",
+                text: "Honey, I'm a prize and you're a catch. We're a perfect match.",
                 artist: "NICKEL CREEK",
                 font: "'Special Elite', serif",
                 textColor: "#7e57c2" // Mid-day deep lavender
@@ -106,14 +106,14 @@
                 textColor: "#4db6ac" // Sage/teal tone
             },
             { 
-                text: "THE TRICK IS TO COME BACK TO LIFE, DON'T GET OVERWHELMED.", 
-                artist: "GRATEFUL DEAD",
+                text: "You can't always get what you want, but if you try sometimes, you just might find you get what you need.", 
+                artist: "The Rolling Stones",
                 font: "Georgia, serif",
                 textColor: "#e57373" // Soft brick red
             },
             {
-                text: "CAN'T YOU SEE THAT IT'S ALL REAL? EVERY RECKLESS DEED OR PIECE OF DUST YOU FEEL.",
-                artist: "BILLY STRINGS",
+                text: "She wants to do right, just not right now.",
+                artist: "The Band of Heathens",
                 font: "'VT323', monospace",
                 textColor: "#26a69a" // Focus-enhancing mint/teal
             }
@@ -150,7 +150,7 @@
         const now = new Date();
         const hours = now.getHours();
         const minutes = now.getMinutes();
-        const currentTime = hours + (minutes / 60);
+        const currentTime = hours + (minutes / 60); // Corrected time math mapping
         
         let currentPool = [];
 
