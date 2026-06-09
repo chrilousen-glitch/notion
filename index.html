@@ -81,22 +81,4 @@
     function displayClock(today) {
         var hour = padZeros(twelveHour(today.getHours()));
         var minutes = padZeros(today.getMinutes());
-        var seconds = padZeros(today.getSeconds()) + (today.getHours() >= 12 ? " pm" : " am");
-        document.getElementById('hour').innerHTML = hour;
-        document.getElementById('min').innerHTML = minutes;
-        document.getElementById('sec').innerHTML = seconds;
-    }
-    
-    function twelveHour(hour) { return hour > 12 ? hour - 12 : (hour === 0 ? 12 : hour); }
-    function padZeros(num) { return num < 10 ? '0' + num : num; }
-
-    // Calculate time remaining directly until the next exact :00 or :30 mark on the clock
-    function msUntilNextInterval() {
-        const now = new Date();
-        const min = now.getMinutes();
-        const sec = now.getSeconds();
-        const ms = now.getMilliseconds();
-        
-        const minutesRemaining = (min < 30) ? (30 - min) : (60 - min);
-        return (minutesRemaining * 60 * 1000) - (sec * 1000) - ms;
-    }
+        var seconds = padZeros(today
