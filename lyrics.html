@@ -39,7 +39,7 @@
             font-weight: 400;              
             line-height: 1.35;
             margin-bottom: 16px;
-            text-transform: none !important; /* Hard reset to stop any capitalization overrides */
+            text-transform: none !important; /* Forces exact sentence capitalization typed below */
             transition: color 0.5s ease;
         }
 
@@ -74,7 +74,7 @@
         "#0097b2"  // Cyan/Teal
     ];
 
-    // == COMBINED LYRIC POOL ==
+    // == SINGLE SIMPLIFIED LYRIC POOL ==
     const allLyrics = [
         { text: "Keep your eyes on the prize, keep your feet on the ground. Don't let the weight of the world try to drag you down.", artist: "The Band of Heathens" },
         { text: "Blue sky to blue sky, new day to new day... You find your way.", artist: "The Allman Brothers Band" },
@@ -136,7 +136,7 @@
         { text: "I'm just a man on a wire, a contradiction in arms. Trading pieces of soul to keep from causing you harm.", artist: "Fall Out Boy" }
     ];
 
-    // Pick a color that is guaranteed different from the last one stored
+    // Pick a color that is guaranteed different from the last one stored in localStorage
     function getUniqueRandomColor() {
         const lastColor = localStorage.getItem('widgetLastColor');
         const availableColors = allowedColors.filter(c => c !== lastColor);
@@ -146,11 +146,11 @@
         return nextColor;
     }
 
-    // Main update trigger for changing both layout color and typography content
+    // Main update trigger for picking a random lyric and a fresh, non-repeating color
     function updateWidgetState() {
         if (allLyrics.length === 0) return;
 
-        // 1. Swap the lyric and artist info randomly
+        // 1. Pick any random lyric from the combined pool
         const randomIndex = Math.floor(Math.random() * allLyrics.length);
         const selected = allLyrics[randomIndex];
 
@@ -160,13 +160,13 @@
         lyricEl.textContent = selected.text;
         songEl.textContent = "- " + selected.artist + " -";
         
-        // 2. Grab a fresh color and transition the font styling
+        // 2. Apply the fresh color
         const activeColor = getUniqueRandomColor();
         lyricEl.style.color = activeColor;
         songEl.style.color = activeColor;
     }
 
-    // Calculate time remaining directly until the next exact :00 or :30 mark
+    // Calculate time remaining until the next exact :00 or :30 mark on the clock
     function msUntilNextInterval() {
         const now = new Date();
         const min = now.getMinutes();
@@ -177,17 +177,17 @@
         return (minutesRemaining * 60 * 1000) - (sec * 1000) - ms;
     }
 
-    // Handle timer hand-off for strict half-hourly updates
+    // Coordinates the initial time sync
     function initializeSyncTimer() {
         setTimeout(() => {
-            updateWidgetState(); // Trigger on the exact half-hour split
-            setInterval(updateWidgetState, 1800000); // Repeat every 30 minutes thereafter
+            updateWidgetState(); // Changes right at the upcoming top/half hour
+            setInterval(updateWidgetState, 1800000); // Continues cycling every 30 minutes
         }, msUntilNextInterval());
     }
 
-    // --- EXECUTE ON LOAD ---
-    updateWidgetState();   // Fires instantly on layout refresh
-    initializeSyncTimer(); // Syncs background cycles to system clock
+    // --- RUNS IMMEDIATELY ON LOAD ---
+    updateWidgetState();   // Fires instantly whenever you refresh the page
+    initializeSyncTimer(); // Launches the system clock sync
 </script>
 
 </body>
