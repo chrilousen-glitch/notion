@@ -3,62 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Transparent Lyric Matrix</title>
-
+    <title>Greetings</title>
     <style>
-        /* Force Courier New globally across the widget with standard monospace fallbacks */
-        * {
-            font-family: 'Courier New', Courier, monospace !important;
-        }
-
-        html, body {
-            background-color: transparent; 
-            margin: 0;
-            padding: 10px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            height: 100vh;
-        }
-
-        .lyric-container {
-            width: 100%;
-            max-width: 600px;
-            background-color: transparent; 
-            border: 1px solid #000000;    /* Thin black outline */
-            border-radius: 6px;            
-            box-shadow: none;              
-            padding: 24px;                 /* Generous padding so text won't touch the outline */
-            box-sizing: border-box;
-            text-align: center;            
-        }
-
-        .lyric-text {
-            font-size: 1.8em;              
-            font-weight: 400;              
-            line-height: 1.35;
-            margin-bottom: 16px;
-            text-transform: none !important; /* Forces exact sentence capitalization typed below */
-            transition: color 0.5s ease;
-        }
-
-        .song-title {
-            font-size: 1.1em;              
-            font-weight: 700;              /* Distinct bold weight for contrast */
-            letter-spacing: 2px;           /* Clean spacing for monospaced tracking */
-            text-transform: uppercase !important; /* Enforces all caps for the artist */
-            transition: color 0.5s ease;
-        }
+        body { text-transform: none; background: transparent; margin: 0; padding: 10px; }
+        .widget { padding: 15px; color: #000000; display: flex; justify-content: center; align-items: center; flex-direction: column; max-width: 75%; margin: auto; border: 2px solid #000000; border-radius: 5px; background: transparent; }
+        .greet { font-size: 2em; }
+        .date { font-family: monospace; font-size: 1.75em; }
+        .clock { font-family: monospace; font-size: 1.25em; }
+        .time { display: inline-block; min-width: 15px; }
+        .colon { font-size: 1em; display: inline-block; }
     </style>
+    <style id="dynamicColorStyles"></style>
 </head>
 <body>
-
-<div class="lyric-container" id="widgetContainer">
-    <div class="lyric-text" id="lyricDisplay">Loading inspiration...</div>
-    <div class="song-title" id="songDisplay">Loading...</div>
-</div>
-
+<div class="container">
+    <div class="widget">
+        <div class="greet" id="greet"></div>
+        <div class="date" id="date"></div>
+        <div class="clock">
+            <div class="time" id="hour"></div>
+            <div class="colon">:</div>
+            <div class="time" id="min"></div>
+            <div class="colon">:</div>
+            <div class="time" id="sec"></div>
+        </div>
+    </div>
+</div>        
 <script>
     // == YOUR 10 SPECIFIED COLOR HEX CODES ==
     const allowedColors = [
@@ -74,111 +44,26 @@
         "#0097b2"  // Cyan/Teal
     ];
 
-    // == SINGLE SIMPLIFIED LYRIC POOL ==
-    const allLyrics = [
-        { text: "Keep your eyes on the prize, keep your feet on the ground. Don't let the weight of the world try to drag you down.", artist: "The Band of Heathens" },
-        { text: "Blue sky to blue sky, new day to new day... You find your way.", artist: "The Allman Brothers Band" },
-        { text: "So I'll set my dial to the center of town, and I'll turn it up until the speakers blow down.", artist: "Dawes" },
-        { text: "Oh, silly me. That's just me.", artist: "Kurt Vile" },
-        { text: "Wakin', the dawn of day, and I gotta think about what I wanna say...", artist: "Kurt Vile" },
-        { text: "Honey, I'm a prize and you're a catch. We're a perfect match.", artist: "Nickel Creek" },
-        { text: "Just relax. You're doing fine.", artist: "Phish" },
-        { text: "You can't always get what you want, but if you try sometimes, you just might find you get what you need.", artist: "The Rolling Stones" },
-        { text: "She wants to do right, just not right now.", artist: "The Band of Heathens" },
-        { text: "I'm gonna sit on the porch and watch the storm roll in. Let the thunder roll, let the rain wash over my skin.", artist: "The Band of Heathens" },
-        { text: "Don't let the sound of your own wheels drive you crazy.", artist: "Eagles" },
-        { text: "To live is to fly, low and high. So close your eyes and let the darkness rotate by.", artist: "Townes Van Zandt" },
-        { text: "We're the new face of 'failure'—pretty and clean. Statuesque in the black light, living a dream.", artist: "Fall Out Boy" },
-        { text: "We are young despite the years.", artist: "fun." },
-        { text: "The sun is the same in a relative way, but you're older.", artist: "Pink Floyd" },
-        { text: "Don't focus on the future or you'll miss what's right in front of you.", artist: "Phish" },
-        { text: "Emancipate yourselves from mental slavery.", artist: "Bob Marley" },
-        { text: "There is a crack in everything, that's how the light gets in.", artist: "Leonard Cohen" },
-        { text: "We are standard deviations where there are no rules.", artist: "Dawes" },
-        { text: "The days are long but the years are short.", artist: "Nickel Creek" },
-        { text: "I have thousands of days left to wander.", artist: "Hey Rosetta!" },  
-        { text: "None but ourselves can free our minds.", artist: "Bob Marley" },
-        { text: "May your heart always be joyful, may your song always be sung.", artist: "Bob Dylan" },
-        { text: "I change shapes just to hide in this place, but I'm still an animal.", artist: "Miike Snow" },
-        { text: "The track is clear, the engine's running hot.", artist: "Billy Strings" },
-        { text: "I'm just a face in the crowd, trying to find my way.", artist: "Tom Petty" },
-        { text: "Every step you take is a step toward the unknown.", artist: "Bob Dylan" },
-        { text: "You gotta know when to hold 'em, know when to fold 'em.", artist: "Kenny Rogers" },
-        { text: "The sun will rise and we will try again.", artist: "Twenty One Pilots" },
-        { text: "We are the choices we make when we have no choices left.", artist: "Dawes" },
-        { text: "The road goes on forever and the party never ends.", artist: "Robert Earl Keen" },
-        { text: "The world is full of kings and queens who blind your eyes and steal your dreams.", artist: "Black Sabbath" },
-        { text: "And it's a long way to the top if you wanna rock 'n' roll.", artist: "AC/DC" },
-        { text: "The dreamers are the ones who change the world.", artist: "Fall Out Boy" },
-        { text: "I have seen the future and it's a long way from here.", artist: "Leonard Cohen" },
-        { text: "The stars are bright but they're so far away.", artist: "Billy Strings" },
-        { text: "You can't run away from yourself.", artist: "Townes Van Zandt" },
-        { text: "The pages are turning but the story stays the same.", artist: "Nickel Creek" },
-        { text: "The wind is blowing and the clock is ticking.", artist: "Phish" },
-        { text: "The sky is a canvas and the world is a paintbox.", artist: "Fall Out Boy" },
-        { text: "The lines are drawn and the boundaries are set.", artist: "Dawes" },
-        { text: "There's a method to the madness, a reason for the pain.", artist: "Fall Out Boy" },
-        { text: "The sun is sinking low and the shadows are long.", artist: "Townes Van Zandt" },
-        { text: "The track is long and the destination is far.", artist: "Billy Strings" },
-        { text: "The world is full of wonder if you know where to look.", artist: "Nickel Creek" },
-        { text: "The sun will shine on those who stand.", artist: "Sly & The Family Stone" },
-        { text: "I have walked a million miles and I have a million more to go.", artist: "Billy Strings" },
-        { text: "The sky is clear and the horizon is wide.", artist: "Nickel Creek" },
-        { text: "The lines on the map are just suggestions.", artist: "Nickel Creek" },
-        { text: "The world is spinning fast and we are just holding on.", artist: "Nickel Creek" },
-        { text: "We are standard deviations in a world of rules.", artist: "Dawes" },
-        { text: "We're all going on a ride that we can't control. So you might as well leave the driving to your soul.", artist: "The Band of Heathens" },
-        { text: "Set the gearshift for the high gear of your soul! You've got to run like an antelope, out of control!", artist: "Phish" },
-        { text: "When the reality headlights are too cold and bright, some candlepower is a reasonable escape route for the night.", artist: "Dawes" },
-        { text: "Meet me at the creek, boys, meet me at the creek. The water's rising higher and the timber's getting weak.", artist: "Billy Strings" },
-        { text: "When the seasons change and the cold wind blows, I'll still be sitting by this rockside all alone.", artist: "Nickel Creek" },
-        { text: "Give me one reason to go on living, and I'll give you ten not to die.", artist: "Townes Van Zandt" },
-        { text: "I'm just a man on a wire, a contradiction in arms. Trading pieces of soul to keep from causing you harm.", artist: "Fall Out Boy" }
-    ];
-
     // Pick a color that is guaranteed different from the last one stored
     function getUniqueRandomColor() {
-        const lastColor = localStorage.getItem('widgetLastColor');
+        const lastColor = localStorage.getItem('greetingsLastColor');
         const availableColors = allowedColors.filter(c => c !== lastColor);
         const nextColor = availableColors[Math.floor(Math.random() * availableColors.length)];
         
-        localStorage.setItem('widgetLastColor', nextColor);
+        localStorage.setItem('greetingsLastColor', nextColor);
         return nextColor;
     }
 
-    // Main update trigger for picking a fresh lyric and color without immediate repeats
-    function updateWidgetState() {
-        if (allLyrics.length === 0) return;
-
-        // 1. Filter out the last artist to prevent back-to-back repetitions
-        const lastArtist = localStorage.getItem('widgetLastArtist');
-        let availableLyrics = allLyrics.filter(item => item.artist !== lastArtist);
-
-        // Fallback safety filter just in case the main pool is empty
-        if (availableLyrics.length === 0) {
-            availableLyrics = allLyrics;
-        }
-
-        // Pick a random lyric from the filtered selection
-        const randomIndex = Math.floor(Math.random() * availableLyrics.length);
-        const selected = availableLyrics[randomIndex];
-
-        // Store the newly selected artist for the next refresh/cycle comparison
-        localStorage.setItem('widgetLastArtist', selected.artist);
-
-        const lyricEl = document.getElementById('lyricDisplay');
-        const songEl = document.getElementById('songDisplay');
-
-        lyricEl.textContent = selected.text;
-        songEl.textContent = "- " + selected.artist + " -";
-        
-        // 2. Apply the fresh color
+    // Overrides text colors securely via CSS rules instead of touching HTML inner content
+    function applyDynamicColoring() {
         const activeColor = getUniqueRandomColor();
-        lyricEl.style.color = activeColor;
-        songEl.style.color = activeColor;
+        const styleSheet = document.getElementById('dynamicColorStyles');
+        
+        // Force the text elements inside the widget to inherit the color override
+        styleSheet.innerHTML = `.widget, .greet, .date, .clock, .time, .colon { color: ${activeColor} !important; }`;
     }
 
-    // Calculate time remaining until the next exact :00 or :30 mark on the clock
+    // Calculate time remaining directly until the next exact :00 or :30 mark on the clock
     function msUntilNextInterval() {
         const now = new Date();
         const min = now.getMinutes();
@@ -189,18 +74,51 @@
         return (minutesRemaining * 60 * 1000) - (sec * 1000) - ms;
     }
 
-    // Coordinates the initial time sync
+    // Coordinates the interval color cycles
     function initializeSyncTimer() {
         setTimeout(() => {
-            updateWidgetState(); // Changes right at the upcoming top/half hour
-            setInterval(updateWidgetState, 1800000); // Continues cycling every 30 minutes
+            applyDynamicColoring(); // Changes right at the upcoming top/half hour
+            setInterval(applyDynamicColoring, 1800000); // Continues cycling every 30 minutes
         }, msUntilNextInterval());
     }
 
-    // --- RUNS IMMEDIATELY ON LOAD ---
-    updateWidgetState();   // Fires instantly whenever you refresh the page
-    initializeSyncTimer(); // Launches the system clock sync
+    // --- WIDGET ENGINE ---
+    function displayGreetings(today){
+        var hrs = today.getHours();
+        var name = "Christi";
+        var greet = "";
+        if (hrs < 12) greet = 'Good Morning, ' + name + "!";
+        else if (hrs >= 12 && hrs <= 17) greet = 'Good Afternoon, ' + name + "!";
+        else greet = 'Good Evening, ' + name + "!";
+        document.getElementById('greet').innerHTML = greet;
+    }
+    function displayDate(today) {   
+        const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        // Formats exactly as: Day of the Week, Month Day, Year
+        document.getElementById('date').innerHTML = days[today.getDay()] + ", " + monthNames[today.getMonth()] + " " + today.getDate() + ", " + today.getFullYear();
+    }
+    function displayClock(today) {
+        var hour = padZeros(twelveHour(today.getHours()));
+        var minutes = padZeros(today.getMinutes());
+        var seconds = padZeros(today.getSeconds()) + (today.getHours() >= 12 ? " pm" : " am");
+        document.getElementById('hour').innerHTML = hour;
+        document.getElementById('min').innerHTML = minutes;
+        document.getElementById('sec').innerHTML = seconds;
+    }
+    function twelveHour(hour) { return hour > 12 ? hour - 12 : (hour === 0 ? 12 : hour); }
+    function padZeros(num) { return num < 10 ? '0' + num : num; }
+    
+    function displayWidget() {
+        var today = new Date();
+        displayGreetings(today); displayDate(today); displayClock(today);
+        setTimeout(displayWidget, 500);
+    }
+    
+    // --- RUN EVERYTHING ---
+    applyDynamicColoring(); // Sets random color instantly on page load/refresh
+    displayWidget();        // Starts your original live display clock loops
+    initializeSyncTimer();  // Sets up the hourly/half-hourly color changes
 </script>
-
 </body>
 </html>
