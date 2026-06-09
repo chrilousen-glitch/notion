@@ -1,74 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Transparent Lyric Matrix</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap" rel="stylesheet">
+<style>
+    html, body {
+        background-color: transparent; /* Seamless light/dark mode adaptation */
+        margin: 0;
+        padding: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        height: 100vh;
+    }
 
-    <style>
-        html, body {
-            background-color: transparent; /* Seamless light/dark mode adaptation */
-            margin: 0;
-            padding: 10px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            height: 100vh;
-        }
+    .lyric-container {
+        width: 100%;
+        max-width: 500px;
+        background-color: transparent; 
+        border: 1px solid #000000;    /* Thin black outline */
+        border-radius: 6px;            
+        box-shadow: none;              
+        padding: 24px;                 /* Generous padding so text won't touch the outline */
+        box-sizing: border-box;
+        text-align: center;            
+        font-family: 'Amatic SC', sans-serif; 
+    }
 
-        .lyric-container {
-            width: 100%;
-            max-width: 500px;
-            background-color: transparent; /* Maintains transparency */
-            border: 1px solid #000000;    /* Thin black outline */
-            border-radius: 6px;            
-            box-shadow: none;              
-            padding: 24px;                 /* Generous padding so text won't touch the outline */
-            box-sizing: border-box;
-            text-align: center;            
-            font-family: 'Amatic SC', cursive; /* Applied Amatic SC globally to the container */
-        }
+    .lyric-text {
+        font-size: 2.6em;              /* Increased size for better hierarchy */
+        font-weight: 400;              /* Regular weight for the lyric itself */
+        line-height: 1.2;
+        margin-bottom: 12px;
+        transition: color 0.5s ease;
+    }
 
-        .lyric-text {
-            font-size: 2.2em;              /* Bumped up font size since Amatic SC runs small and narrow */
-            font-weight: 400;              /* Regular weight for the lyric itself */
-            line-height: 1.3;
-            margin-bottom: 8px;
-            transition: color 0.5s ease;
-        }
-
-        .song-title {
-            font-size: 1.5em;              /* Bumped up font size for balance */
-            font-weight: 700;              /* Bold weight for the artist name */
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            transition: color 0.5s ease;
-        }
-    </style>
-</head>
-<body>
-
-<div class="lyric-container" id="widgetContainer">
-    <div class="lyric-text" id="lyricDisplay">Loading inspiration...</div>
-    <div class="song-title" id="songDisplay">Loading...</div>
-</div>
-
-<script>
-    // == YOUR TRANSPARENT LYRIC MATRIX ==
-    const lyricPools = {
-        morning: [
-            { 
-                text: "KEEP YOUR EYES ON THE PRIZE, KEEP YOUR FEET ON THE GROUND. DON'T LET THE WEIGHT OF THE WORLD TRY TO DRAG YOU DOWN.", 
-                artist: "THE BAND OF HEATHENS",
-                textColor: "#a1887f" // Muted brown/gray that works in light & dark
-            },
-            { 
-                text: "BLUE SKY TO BLUE SKY, NEW DAY TO NEW DAY... YOU FIND YOUR WAY.", 
+    .song-title {
+        font-size: 1.3em;              /* Adjusted for balanced contrast against the regular text */
+        font-weight: 700;              /* Clean, explicit bold weight for the artist name */
+        letter-spacing: 3px;           /* Slightly widened tracking for readability */
+        text-transform: uppercase;
+        transition: color 0.5s ease;
+    }
+</style>                text: "BLUE SKY TO BLUE SKY, NEW DAY TO NEW DAY... YOU FIND YOUR WAY.", 
                 artist: "THE ALLMAN BROTHERS BAND",
                 textColor: "#2196f3" // Vibrant blue
             },
