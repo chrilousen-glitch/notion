@@ -4,15 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Transparent Lyric Matrix</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght=400;700&display=swap" rel="stylesheet">
 
     <style>
-        /* Force Amatic SC everywhere globally, overriding any container defaults */
+        /* Force Times New Roman globally across the widget */
         * {
-            font-family: 'Amatic SC', handwriting !important;
+            font-family: 'Times New Roman', Times, serif !important;
         }
 
         html, body {
@@ -39,19 +35,19 @@
         }
 
         .lyric-text {
-            font-size: 2em;              /* Increased size for better hierarchy */
-            font-weight: 350;              /* Regular weight for the lyric itself */
+            font-size: 2em;              
+            font-weight: 400;              
             line-height: 1.25;
             margin-bottom: 12px;
-            text-transform: uppercase;     /* Consistent presentation style */
+            /* text-transform removed here to allow original sentence capitalization */
             transition: color 0.5s ease;
         }
 
         .song-title {
-            font-size: 1.3em;              /* Adjusted for balanced contrast against the regular text */
-            font-weight: 700;              /* Clean, explicit bold weight for the artist name */
-            letter-spacing: 3px;           /* Slightly widened tracking for readability */
-            text-transform: uppercase;
+            font-size: 1.3em;              
+            font-weight: 700;              /* Distinct bold weight for contrast */
+            letter-spacing: 3px;           /* Elegantly widened tracking */
+            text-transform: uppercase;     /* Enforces all caps for the artist */
             transition: color 0.5s ease;
         }
     </style>
@@ -64,344 +60,31 @@
 </div>
 
 <script>
-    // == YOUR TRANSPARENT LYRIC MATRIX ==
+    // == YOUR LYRIC POOLS ==
     const lyricPools = {
         morning: [
-            { 
-                text: "KEEP YOUR EYES ON THE PRIZE, KEEP YOUR FEET ON THE GROUND. DON'T LET THE WEIGHT OF THE WORLD TRY TO DRAG YOU DOWN.", 
-                artist: "THE BAND OF HEATHENS",
-                textColor: "#a1887f" 
-            },
-            { 
-                text: "BLUE SKY TO BLUE SKY, NEW DAY TO NEW DAY... YOU FIND YOUR WAY.", 
-                artist: "THE ALLMAN BROTHERS BAND",
-                textColor: "#2196f3" 
-            },
-            { 
-                text: "SO I'LL SET MY DIAL TO THE CENTER OF TOWN, AND I'LL TURN IT UP UNTIL THE SPEAKERS BLOW DOWN.", 
-                artist: "DAWES",
-                textColor: "#ff7043" 
-            }
+            { text: "Keep your eyes on the prize, keep your feet on the ground. Don't let the weight of the world try to drag you down.", artist: "The Band of Heathens" },
+            { text: "Blue sky to blue sky, new day to new day... You find your way.", artist: "The Allman Brothers Band" },
+            { text: "So I'll set my dial to the center of town, and I'll turn it up until the speakers blow down.", artist: "Dawes" }
         ],
         workHours: [
-            { 
-                text: "OH, SILLY ME. THAT'S JUST ME.", 
-                artist: "KURT VILE",
-                textColor: "#1800ad" 
-            },
-            { 
-                text: "Wakin', the dawn of day, And I gotta think about what I wanna say...", 
-                artist: "KURT VILE",
-                textColor: "#666666" 
-            },
-            {
-                text: "Honey, I'm a prize and you're a catch. We're a perfect match.",
-                artist: "NICKEL CREEK",
-                textColor: "#7e57c2" 
-            }
+            { text: "Oh, silly me. That's just me.", artist: "Kurt Vile" },
+            { text: "Wakin', the dawn of day, and I gotta think about what I wanna say...", artist: "Kurt Vile" },
+            { text: "Honey, I'm a prize and you're a catch. We're a perfect match.", artist: "Nickel Creek" }
         ],
         afternoon: [
-            { 
-                text: "JUST RELAX. YOU'RE DOING FINE.", 
-                artist: "PHISH",
-                textColor: "#4db6ac" 
-            },
-            { 
-                text: "You can't always get what you want, but if you try sometimes, you just might find you get what you need.", 
-                artist: "The Rolling Stones",
-                textColor: "#e57373" 
-            },
-            {
-                text: "She wants to do right, just not right now.",
-                artist: "The Band of Heathens",
-                textColor: "#26a69a" 
-            }
+            { text: "Just relax. You're doing fine.", artist: "Phish" },
+            { text: "You can't always get what you want, but if you try sometimes, you just might find you get what you need.", artist: "The Rolling Stones" },
+            { text: "She wants to do right, just not right now.", artist: "The Band of Heathens" }
         ],
         evening: [
-            { 
-                text: "I'M GONNA SIT ON THE PORCH AND WATCH THE STORM ROLL IN. LET THE THUNDER ROLL, LET THE RAIN WASH OVER MY SKIN.", 
-                artist: "THE BAND OF HEATHENS",
-                textColor: "#ffb74d" 
-            },
-            { 
-                text: "DON'T LET THE SOUND OF YOUR OWN WHEELS DRIVE YOU CRAZY.", 
-                artist: "EAGLES",
-                textColor: "#90a4ae" 
-            },
-            {
-                text: "TO LIVE IS TO FLY, LOW AND HIGH. SO CLOSE YOUR EYES AND LET THE DARKNESS ROTATE BY.",
-                artist: "TOWNES VAN ZANDT",
-                textColor: "#b0bec5" 
-            },
-            {
-                text: "WE'RE THE NEW FACE OF 'FAILURE'—PRETTY AND CLEAN. STATUESQUE IN THE BLACK LIGHT, LIVING A DREAM.",
-                artist: "FALL OUT BOY",
-                textColor: "#f48fb1" 
-            },
-            {
-                text: "We are young despite the years.",
-                artist: "fun.",
-                textColor: "#f48fb1"
-            },
-            {
-                text: "The sun is the same in a relative way, but you're older.",
-                artist: "Pink Floyd",
-                textColor: "#f48fb1"
-            },
-            {
-                text: "Don't focus on the future or you'll miss what's right in front of you.",
-                artist: "Phish",
-                textColor: "#f48fb1"
-            },
-            {
-                text: "Emancipate yourselves from mental slavery.",
-                artist: "Bob Marley",
-                textColor: "#f48fb1"
-            },
-            {
-                text: "There is a crack in everything, that's how the light gets in.",
-                artist: "Leonard Cohen",
-                textColor: "#f48fb1"
-            },
-            {
-                text: "We are standard deviations where there are no rules.",
-                artist: "Dawes",
-                textColor: "#f48fb1"
-            },
-            {
-                text: "The days are long but the years are short.",
-                artist: "Nickel Creek",
-                textColor: "#f48fb1"
-            },
-            {
-                text: "I have thousands of days left to wander.",
-                artist: "Hey Rosetta!",
-                textColor: "#f48fb1"
-            },  
-            {
-                text: "none but ourselves can free our minds.",
-                artist: "Bob Marley",
-                textColor: "#f48fb1"
-            },
-            {
-                text: "May your heart always be joyful, may your song always be sung.",
-                artist: "Bob Dylan",
-                textColor: "#f48fb1"
-            },
-            {
-                text: "I change shapes just to hide in this place, but I'm still an animal.",
-                artist: "Mike Snow",
-                textColor: "#f48fb1"
-            },
-            {
-                text: "The track is clear, the engine's running hot.",
-                artist: "Billy Strings",
-                textColor: "#f48fb1"
-            },
-            {
-                text: "I'm just a face in the crowd, trying to find my way.",
-                artist: "Tom Petty",
-                textColor: "#f48fb1"
-            },
-            {
-                text: "Every step you take is a step toward the unknown.",
-                artist: "Bob Dylan",
-                textColor: "#f48fb1"
-            },
-            {
-                text: "You gotta know when to hold 'em, know when to fold 'em.",
-                artist: "Kenny Rogers",
-                textColor: "#f48fb1"
-            },
-            {
-                text: "The sun will rise and we will try again.",
-                artist: "21 Pilots",
-                textColor: "#f48fb1"
-            },
-            {
-                text: "We are the choices we make when we have no choices left.",
-                artist: "Dawes",
-                textColor: "#f48fb1"
-            },
-            {
-                text: "The road goes on forever and the party never ends.",
-                artist: "Robert Earl Keen",
-                textColor: "#f48fb1"
-            },
-            {
-                text: "The world is full of kings and queens who blind your eyes and steal your dreams.",
-                artist: "Black Sabbath",
-                textColor: "#f48fb1"
-            },
-            {
-                text: "And it's a long way to the top if you wanna rock 'n' roll.",
-                artist: "AC-DC",
-                textColor: "#f48fb1"
-            },
-            {
-                text: "The dreamers are the ones who change the world.",
-                artist: "Fall Out Boy",
-                textColor: "#f48fb1"
-            },
-            {
-                text: "I have seen the future and it's a long way from here.",
-                artist: "Leonard Cohen",
-                textColor: "#f48fb1"
-            },
-            {
-                text: "The stars are bright but they're so far away.",
-                artist: "Billy Strings",
-                textColor: "#f48fb1"
-            },
-            {
-                text: "You can't run away from yourself.",
-                artist: "Townes Van Zandt",
-                textColor: "#f48fb1"
-            },
-            {
-                text: "The pages are turning but the story stays the same.",
-                artist: "Nickel Creek",
-                textColor: "#f48fb1"
-            },
-            {
-                text: "The wind is blowing and the clock is ticking.",
-                artist: "Phish",
-                textColor: "#f48fb1"
-            },
-            {
-                text: "The sky is a canvas and the world is a paintbox.",
-                artist: "Fall Out Boy",
-                textColor: "#f48fb1"
-            },
-            {
-                text: "The lines are drawn and the boundaries are set.",
-                artist: "Dawes",
-                textColor: "#f48fb1"
-            },
-            {
-                text: "There's a method to the madness, a reason for the pain.",
-                artist: "Fall Out Boy",
-                textColor: "#f48fb1"
-            },
-            {
-                text: "The sun is sinking low and the shadows are long.",
-                artist: "Townes Van Zandt",
-                textColor: "#f48fb1"
-            },
-            {
-                text: "The track is long and the destination is far.",
-                artist: "Billy Strings",
-                textColor: "#f48fb1"
-            },
-            {
-                text: "The world is full of wonder if you know where to look.",
-                artist: "Nickel Creek",
-                textColor: "#f48fb1"
-            },
-            {
-                text: "The sun will shine on those who stand.",
-                artist: "Sly & The Family Stone",
-                textColor: "#f48fb1"
-            },
-            {
-                text: "I have walked a million miles and I have a million more to go.",
-                artist: "Billy Strings",
-                textColor: "#f48fb1"
-            },
-            {
-                text: "The sky is clear and the horizon is wide.",
-                artist: "Nickel Creek",
-                textColor: "#f48fb1"
-            },
-            {
-                text: "The lines on the map are just suggestions.",
-                artist: "Nickel Creek",
-                textColor: "#f48fb1"
-            },
-            {
-                text: "The world is spinning fast and we are just holding on.",
-                artist: "Nickel Creek",
-                textColor: "#f48fb1"
-            },
-            {
-                text: "We are standard deviations in a world of rules.",
-                artist: "Dawes",
-                textColor: "#f48fb1"
-            },
-            {
-                text: "WE'RE ALL GOING ON A RIDE THAT WE CAN'T CONTROL. SO YOU MIGHT AS WELL LEAVE THE DRIVING TO YOUR SOUL.",
-                artist: "THE BAND OF HEATHENS",
-                textColor: "#ffb74d"
-            },
-            {
-                text: "SET THE GEARSHIFT FOR THE HIGH GEAR OF YOUR SOUL! YOU'VE GOT TO RUN LIKE AN ANTELOPE, OUT OF CONTROL!",
-                artist: "PHISH",
-                textColor: "#4db6ac"
-            },
-            {
-                text: "WHEN THE REALITY HEADLIGHTS ARE TOO COLD AND BRIGHT, SOME CANDLEPOWER IS A REASONABLE ESCAPE ROUTE FOR THE NIGHT.",
-                artist: "DAWES",
-                textColor: "#b0bec5"
-            },
-            {
-                text: "MEET ME AT THE CREEK, BOYS, MEET ME AT THE CREEK. THE WATER'S RISING HIGHER AND THE TIMBER'S GETTING WEAK.",
-                artist: "BILLY STRINGS",
-                textColor: "#90a4ae"
-            },
-            {
-                text: "WHEN THE SEASONS CHANGE AND THE COLD WIND BLOWS, I'LL STILL BE SITTING BY THIS ROCKSIDE ALL ALONE.",
-                artist: "NICKEL CREEK",
-                textColor: "#7e57c2"
-            },
-            {
-                text: "GIVE ME ONE REASON TO GO ON LIVING, AND I'LL GIVE YOU TEN NOT TO DIE.",
-                artist: "TOWNES VAN ZANDT",
-                textColor: "#ff7043"
-            },
-            {
-                text: "I'M JUST A MAN ON A WIRE, A CONTRADICTION IN ARMS. TRADING PIECES OF SOUL TO KEEP FROM CAUSING YOU HARM.",
-                artist: "FALL OUT BOY",
-                textColor: "#f48fb1"
-            }
-        ]
-    };
-
-    function updateWidget() {
-        const now = new Date();
-        const hours = now.getHours();
-        const minutes = now.getMinutes();
-        const currentTime = hours + (minutes / 60); 
-        
-        let currentPool = [];
-
-        if (currentTime >= 2.0 && currentTime < 9.0) {
-            currentPool = lyricPools.morning;
-        } else if (currentTime >= 9.0 && currentTime < 14.0) {
-            currentPool = lyricPools.workHours;
-        } else if (currentTime >= 14.0 && currentTime < 20.0) {
-            currentPool = lyricPools.afternoon;
-        } else {
-            currentPool = lyricPools.evening;
-        }
-
-        if (currentPool && currentPool.length > 0) {
-            const randomIndex = Math.floor(Math.random() * currentPool.length);
-            const selected = currentPool[randomIndex];
-
-            const lyricEl = document.getElementById('lyricDisplay');
-            const songEl = document.getElementById('songDisplay');
-
-            lyricEl.textContent = selected.text;
-            songEl.textContent = "- " + selected.artist + " -";
-            
-            lyricEl.style.color = selected.textColor;
-            songEl.style.color = selected.textColor;
-        }
-    }
-
-    updateWidget();
-    setInterval(updateWidget, 1800000); 
-</script>
-
-</body>
-</html>
+            { text: "I'm gonna sit on the porch and watch the storm roll in. Let the thunder roll, let the rain wash over my skin.", artist: "The Band of Heathens" },
+            { text: "Don't let the sound of your own wheels drive you crazy.", artist: "Eagles" },
+            { text: "To live is to fly, low and high. So close your eyes and let the darkness rotate by.", artist: "Townes Van Zandt" },
+            { text: "We're the new face of 'failure'—pretty and clean. Statuesque in the black light, living a dream.", artist: "Fall Out Boy" },
+            { text: "We are young despite the years.", artist: "fun." },
+            { text: "The sun is the same in a relative way, but you're older.", artist: "Pink Floyd" },
+            { text: "Don't focus on the future or you'll miss what's right in front of you.", artist: "Phish" },
+            { text: "Emancipate yourselves from mental slavery.", artist: "Bob Marley" },
+            { text: "There is a crack in everything, that's how the light gets in.", artist: "Leonard Cohen" },
+            { text: "We are standard deviations where there are no rules.", artist: "Dawes"
