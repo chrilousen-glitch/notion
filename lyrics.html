@@ -10,8 +10,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght=400;700&display=swap" rel="stylesheet">
 
     <style>
+        /* Force Amatic SC everywhere globally, overriding any container defaults */
+        * {
+            font-family: 'Amatic SC', sans-serif !important;
+        }
+
         html, body {
-            background-color: transparent; /* Seamless light/dark mode adaptation */
+            background-color: transparent; 
             margin: 0;
             padding: 10px;
             display: flex;
@@ -31,7 +36,6 @@
             padding: 24px;                 /* Generous padding so text won't touch the outline */
             box-sizing: border-box;
             text-align: center;            
-            font-family: 'Amatic SC', sans-serif; 
         }
 
         .lyric-text {
