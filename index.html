@@ -6,11 +6,11 @@
     <title>Greetings</title>
     <style>
         body { text transform: NONE; background: transparent; margin: 0; padding: 10px; }
-        .widget { padding: 15px; color: #000000; display: flex; justify-content: center; align-items: center; flex-direction: column; max-width: 95%; margin: auto; border: 1px solid #000000; border-radius: 5px; background: transparent; }
-        .greet { font-size: 3em; }
-        .date { font-family: monospace; font-size: 2em; }
-        .clock { font-family: monospace; font-size: 2em; }
-        .time { display: inline-block; min-width: 20px; }
+        .widget { padding: 15px; color: #000000; display: flex; justify-content: center; align-items: center; flex-direction: column; max-width: 75%; margin: auto; border: 1px solid #000000; border-radius: 5px; background: transparent; }
+        .greet { font-size: 2em; }
+        .date { font-family: monospace; font-size: 1.75em; }
+        .clock { font-family: monospace; font-size: 1.25em; }
+        .time { display: inline-block; min-width: 15px; }
         .colon { font-size: 1em; display: inline-block; }
     </style>
     <style id="dynamicColorStyles"></style>
@@ -87,9 +87,9 @@
         var hrs = today.getHours();
         var name = "Christi";
         var greet = "";
-        if (hrs < 12) greet = 'Good Morning, ' + name;
-        else if (hrs >= 12 && hrs <= 17) greet = 'Good Afternoon, ' + name;
-        else greet = 'Good Evening, ' + name;
+        if (hrs < 12) greet = 'Good Morning, ' + name = '!";
+        else if (hrs >= 12 && hrs <= 17) greet = 'Good Afternoon, ' + name + "!";
+        else greet = 'Good Evening, ' + name + "!";
         document.getElementById('greet').innerHTML = greet;
     }
     function displayDate(today) {   
