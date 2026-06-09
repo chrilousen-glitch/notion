@@ -136,7 +136,7 @@
         { text: "I'm just a man on a wire, a contradiction in arms. Trading pieces of soul to keep from causing you harm.", artist: "Fall Out Boy" }
     ];
 
-    // Pick a color that is guaranteed different from the last one stored in localStorage
+    // Pick a color that is guaranteed different from the last one stored
     function getUniqueRandomColor() {
         const lastColor = localStorage.getItem('widgetLastColor');
         const availableColors = allowedColors.filter(c => c !== lastColor);
@@ -146,13 +146,25 @@
         return nextColor;
     }
 
-    // Main update trigger for picking a random lyric and a fresh, non-repeating color
+    // Main update trigger for picking a fresh lyric and color without immediate repeats
     function updateWidgetState() {
         if (allLyrics.length === 0) return;
 
-        // 1. Pick any random lyric from the combined pool
-        const randomIndex = Math.floor(Math.random() * allLyrics.length);
-        const selected = allLyrics[randomIndex];
+        // 1. Filter out the last artist to prevent back-to-back repetitions
+        const lastArtist = localStorage.getItem('widgetLastArtist');
+        let availableLyrics = allLyrics.filter(item => item.artist !== lastArtist);
+
+        // Fallback safety filter just in case the main pool is empty
+        if (availableLyrics.length === 0) {
+            availableLyrics = allLyrics;
+        }
+
+        // Pick a random lyric from the filtered selection
+        const randomIndex = Math.floor(Math.random() * availableLyrics.length);
+        const selected = availableLyrics[randomIndex];
+
+        // Store the newly selected artist for the next refresh/cycle comparison
+        localStorage.setItem('widgetLastArtist', selected.artist);
 
         const lyricEl = document.getElementById('lyricDisplay');
         const songEl = document.getElementById('songDisplay');
