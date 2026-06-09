@@ -95,7 +95,8 @@
     function displayDate(today) {   
         const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
         const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-        document.getElementById('date').innerHTML = days[today.getDay()] + ", " + monthNames[today.getMonth()] + " " + today.getDate() + " " + today.getFullYear();
+        // Formats exactly as: Day of the Week, Month Day, Year
+        document.getElementById('date').innerHTML = days[today.getDay()] + ", " + monthNames[today.getMonth()] + " " + today.getDate() + ", " + today.getFullYear();
     }
     function displayClock(today) {
         var hour = padZeros(twelveHour(today.getHours()));
