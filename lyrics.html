@@ -6,9 +6,9 @@
     <title>Transparent Lyric Matrix</title>
 
     <style>
-        /* Force Times New Roman globally across the widget with standard fallback */
+        /* Force Courier New globally across the widget with standard monospace fallbacks */
         * {
-            font-family: 'Times New Roman', Times, serif !important;
+            font-family: 'Courier New', Courier, monospace !important;
         }
 
         html, body {
@@ -35,18 +35,18 @@
         }
 
         .lyric-text {
-            font-size: 2em;              
+            font-size: 1.8em;              /* Slightly balanced for monospace tracking */
             font-weight: 400;              
-            line-height: 1.25;
-            margin-bottom: 12px;
+            line-height: 1.35;
+            margin-bottom: 16px;
             text-transform: none !important; /* Hard reset to stop any capitalization overrides */
             transition: color 0.5s ease;
         }
 
         .song-title {
-            font-size: 1.3em;              
+            font-size: 1.1em;              
             font-weight: 700;              /* Distinct bold weight for contrast */
-            letter-spacing: 3px;           /* Elegantly widened tracking */
+            letter-spacing: 2px;           /* Clean spacing for monospaced tracking */
             text-transform: uppercase !important; /* Enforces all caps for the artist */
             transition: color 0.5s ease;
         }
