@@ -1,0 +1,2715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Word of the Day 2026</title>
+<style>
+  * {
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace !important;
+  }
+
+  html, body {
+    background-color: transparent;
+    margin: 0;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    height: 100vh;
+  }
+
+  .lyric-container {
+    width: 100%;
+    max-width: 600px;
+    background-color: #ffffff;
+    border: 4px solid #000000;
+    border-radius: 6px;
+    box-shadow: none;
+    padding: 24px;
+    box-sizing: border-box;
+    text-align: center;
+  }
+
+  .eyebrow {
+    font-size: 9pt;
+    letter-spacing: 2px;
+    text-transform: uppercase !important;
+    color: #000000;
+    font-weight: 400;
+    margin-bottom: 16px;
+    border-bottom: 1px solid #000000;
+    padding-bottom: 10px;
+  }
+
+  .word-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 6px;
+  }
+
+  .word-title {
+    font-size: 20pt;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase !important;
+    transition: color 0.5s ease;
+  }
+
+  .pos-tag {
+    font-size: 10pt;
+    font-weight: 400;
+    letter-spacing: 1px;
+    text-transform: lowercase !important;
+    color: #444444;
+  }
+
+  .pronunciation {
+    font-size: 10pt;
+    color: #444444;
+    margin-bottom: 16px;
+    letter-spacing: 1px;
+  }
+
+  .definition {
+    font-size: 12pt;
+    font-weight: 350;
+    line-height: 1.35;
+    margin-bottom: 15px;
+    text-transform: none !important;
+    color: #000000;
+  }
+
+  .example {
+    font-size: 10.5pt;
+    line-height: 1.4;
+    color: #333333;
+    font-style: italic;
+  }
+
+  /* Part-of-speech colors */
+  .pos-noun        { color: #0000EE; }
+  .pos-verb        { color: #D40000; }
+  .pos-adjective   { color: #00A8A8; }
+  .pos-adverb      { color: #8B008B; }
+  .pos-preposition { color: #1E8A1E; }
+  .pos-conjunction { color: #C77800; }
+  .pos-pronoun     { color: #8B5A2B; }
+  .pos-interjection{ color: #C2185B; }
+  .pos-other       { color: #000000; }
+</style>
+</head>
+<body>
+
+<div class="lyric-container">
+  <div class="eyebrow" id="eyebrow">Word of the Day 2026</div>
+  <div class="word-row">
+    <span class="word-title" id="word"></span>
+    <span class="pos-tag" id="pos"></span>
+  </div>
+  <div class="pronunciation" id="pron"></div>
+  <p class="definition" id="definition"></p>
+  <p class="example" id="example"></p>
+</div>
+
+<script>
+var WORDS = [
+  {
+    "w": "Diligent",
+    "pos": "adj.",
+    "pron": "DIL-ih-junt",
+    "def": "Showing careful, persistent effort in work or duties.",
+    "ex": "Her diligent follow-up made the credentialing process go smoothly."
+  },
+  {
+    "w": "Cadence",
+    "pos": "n.",
+    "pron": "KAY-dens",
+    "def": "A rhythmic flow or regular pattern of steps.",
+    "ex": "She kept a steady cadence of applications, one a day, without burning out."
+  },
+  {
+    "w": "Lucid",
+    "pos": "adj.",
+    "pron": "LOO-sid",
+    "def": "Expressed clearly; easy to understand.",
+    "ex": "The evaluator praised his lucid explanation of the reasoning."
+  },
+  {
+    "w": "Tenacity",
+    "pos": "n.",
+    "pron": "tuh-NAS-ih-tee",
+    "def": "Persistence in holding to a course of action despite difficulty.",
+    "ex": "Breaking into a new field takes tenacity more than talent."
+  },
+  {
+    "w": "Deliberate",
+    "pos": "adj.",
+    "pron": "dih-LIB-er-ut",
+    "def": "Done consciously and intentionally, not by accident.",
+    "ex": "Every section of her portfolio was a deliberate choice."
+  },
+  {
+    "w": "Rigor",
+    "pos": "n.",
+    "pron": "RIG-er",
+    "def": "Strict thoroughness and precision.",
+    "ex": "Compliance work demands rigor most people never see."
+  },
+  {
+    "w": "Candor",
+    "pos": "n.",
+    "pron": "KAN-der",
+    "def": "The quality of being open and honest in expression.",
+    "ex": "She gave feedback with candor, never softening it into vagueness."
+  },
+  {
+    "w": "Discern",
+    "pos": "v.",
+    "pron": "dih-SURN",
+    "def": "To recognize or understand a distinction clearly.",
+    "ex": "A good evaluator learns to discern nuance from noise."
+  },
+  {
+    "w": "Momentum",
+    "pos": "n.",
+    "pron": "moh-MEN-tum",
+    "def": "The force or drive gained by movement or progress.",
+    "ex": "One finished application built momentum for the next three."
+  },
+  {
+    "w": "Prudent",
+    "pos": "adj.",
+    "pron": "PROO-dunt",
+    "def": "Acting with care and foresight.",
+    "ex": "A prudent budget tracker catches small leaks before they grow."
+  },
+  {
+    "w": "Cogent",
+    "pos": "adj.",
+    "pron": "KOH-junt",
+    "def": "Clear, logical, and convincing.",
+    "ex": "His cogent argument won over the whole committee."
+  },
+  {
+    "w": "Resilience",
+    "pos": "n.",
+    "pron": "rih-ZIL-yens",
+    "def": "The capacity to recover quickly from difficulty.",
+    "ex": "Resilience, not luck, got her through the career pivot."
+  },
+  {
+    "w": "Meticulous",
+    "pos": "adj.",
+    "pron": "muh-TIK-yoo-lus",
+    "def": "Showing great attention to detail.",
+    "ex": "Credentialing work rewards the meticulous and punishes the careless."
+  },
+  {
+    "w": "Pragmatic",
+    "pos": "adj.",
+    "pron": "prag-MAT-ik",
+    "def": "Dealing with things sensibly and realistically.",
+    "ex": "She took a pragmatic approach: apply daily, track everything, adjust weekly."
+  },
+  {
+    "w": "Vantage",
+    "pos": "n.",
+    "pron": "VAN-tij",
+    "def": "A position that gives a broad view or advantage.",
+    "ex": "Her staffing background gave her a rare vantage on healthcare compliance."
+  },
+  {
+    "w": "Steadfast",
+    "pos": "adj.",
+    "pron": "STED-fast",
+    "def": "Firm and unwavering in purpose or loyalty.",
+    "ex": "He stayed steadfast through months of rejections."
+  },
+  {
+    "w": "Nuance",
+    "pos": "n.",
+    "pron": "NOO-ahns",
+    "def": "A subtle distinction or shade of meaning.",
+    "ex": "Grading model responses is mostly a study in nuance."
+  },
+  {
+    "w": "Fortitude",
+    "pos": "n.",
+    "pron": "FOR-tih-tood",
+    "def": "Courage and strength in facing difficulty.",
+    "ex": "It takes fortitude to start over in a new field at any age."
+  },
+  {
+    "w": "Astute",
+    "pos": "adj.",
+    "pron": "uh-STOOT",
+    "def": "Having sharp judgment; shrewd.",
+    "ex": "An astute reviewer catches the error everyone else skims past."
+  },
+  {
+    "w": "Coherent",
+    "pos": "adj.",
+    "pron": "koh-HEER-ent",
+    "def": "Logical and consistent; forming a unified whole.",
+    "ex": "A coherent portfolio tells one story, not five."
+  },
+  {
+    "w": "Adept",
+    "pos": "adj.",
+    "pron": "uh-DEPT",
+    "def": "Very skilled or proficient at something.",
+    "ex": "She became adept at spotting bias in AI outputs within weeks."
+  },
+  {
+    "w": "Ardent",
+    "pos": "adj.",
+    "pron": "AR-dent",
+    "def": "Enthusiastic or passionate.",
+    "ex": "He was an ardent believer in learning by doing."
+  },
+  {
+    "w": "Bolster",
+    "pos": "v.",
+    "pron": "BOHL-ster",
+    "def": "To support or strengthen.",
+    "ex": "A few strong references can bolster a thin resume."
+  },
+  {
+    "w": "Brevity",
+    "pos": "n.",
+    "pron": "BREV-ih-tee",
+    "def": "The quality of expressing much in few words.",
+    "ex": "Good evaluation feedback values brevity over padding."
+  },
+  {
+    "w": "Calibrate",
+    "pos": "v.",
+    "pron": "KAL-ih-brayt",
+    "def": "To adjust precisely for accuracy.",
+    "ex": "She had to calibrate her expectations after the first rejection."
+  },
+  {
+    "w": "Circumspect",
+    "pos": "adj.",
+    "pron": "SUR-kum-spekt",
+    "def": "Wary and careful; considering all circumstances.",
+    "ex": "He was circumspect about sharing unfinished work publicly."
+  },
+  {
+    "w": "Cognizant",
+    "pos": "adj.",
+    "pron": "KOG-nih-zunt",
+    "def": "Aware of or having knowledge of something.",
+    "ex": "Stay cognizant of how each platform scores your answers."
+  },
+  {
+    "w": "Congruent",
+    "pos": "adj.",
+    "pron": "KON-groo-ent",
+    "def": "In agreement or harmony; corresponding.",
+    "ex": "Her resume and LinkedIn were finally congruent."
+  },
+  {
+    "w": "Consolidate",
+    "pos": "v.",
+    "pron": "kun-SOL-ih-dayt",
+    "def": "To combine into a single, more effective whole.",
+    "ex": "She consolidated three scattered trackers into one dashboard."
+  },
+  {
+    "w": "Constructive",
+    "pos": "adj.",
+    "pron": "kun-STRUK-tiv",
+    "def": "Serving a useful purpose; helping to develop or improve.",
+    "ex": "He asked for constructive criticism, not reassurance."
+  },
+  {
+    "w": "Contingent",
+    "pos": "adj.",
+    "pron": "kun-TIN-junt",
+    "def": "Dependent on certain conditions or events.",
+    "ex": "The offer was contingent on passing a background check."
+  },
+  {
+    "w": "Convey",
+    "pos": "v.",
+    "pron": "kun-VAY",
+    "def": "To communicate or make known.",
+    "ex": "Her one-liner bullets conveyed more than a whole paragraph used to."
+  },
+  {
+    "w": "Deft",
+    "pos": "adj.",
+    "pron": "DEFT",
+    "def": "Neatly skillful and quick in action.",
+    "ex": "A deft edit turned a clunky sentence into a sharp one."
+  },
+  {
+    "w": "Discretion",
+    "pos": "n.",
+    "pron": "dih-SKRESH-un",
+    "def": "The freedom to judge or decide; also, tact.",
+    "ex": "Use discretion when sharing details from a confidential project."
+  },
+  {
+    "w": "Diligence",
+    "pos": "n.",
+    "pron": "DIL-ih-jens",
+    "def": "Careful and persistent effort.",
+    "ex": "Daily diligence beat occasional bursts of motivation."
+  },
+  {
+    "w": "Earnest",
+    "pos": "adj.",
+    "pron": "UR-nest",
+    "def": "Sincere and serious in intention.",
+    "ex": "Her earnest tone came through even in a short cover letter."
+  },
+  {
+    "w": "Elucidate",
+    "pos": "v.",
+    "pron": "ih-LOO-sih-dayt",
+    "def": "To make clear; to explain.",
+    "ex": "He asked her to elucidate the scoring rubric further."
+  },
+  {
+    "w": "Emulate",
+    "pos": "v.",
+    "pron": "EM-yoo-layt",
+    "def": "To match or imitate, especially to strive to equal.",
+    "ex": "She studied strong evaluations to emulate their structure."
+  },
+  {
+    "w": "Endeavor",
+    "pos": "n./v.",
+    "pron": "en-DEV-er",
+    "def": "A serious attempt or effort.",
+    "ex": "Learning a new field later in life is no small endeavor."
+  },
+  {
+    "w": "Equanimity",
+    "pos": "n.",
+    "pron": "ek-wuh-NIM-ih-tee",
+    "def": "Mental calm and composure, especially under stress.",
+    "ex": "She answered tough interview questions with equanimity."
+  },
+  {
+    "w": "Exemplary",
+    "pos": "adj.",
+    "pron": "ig-ZEM-pluh-ree",
+    "def": "Serving as a desirable model; outstanding.",
+    "ex": "His exemplary attention to detail set the standard."
+  },
+  {
+    "w": "Exhaustive",
+    "pos": "adj.",
+    "pron": "ig-ZAWS-tiv",
+    "def": "Thorough and complete; covering all elements.",
+    "ex": "She ran an exhaustive check before submitting the report."
+  },
+  {
+    "w": "Facilitate",
+    "pos": "v.",
+    "pron": "fuh-SIL-ih-tayt",
+    "def": "To make an action or process easier.",
+    "ex": "A clear rubric facilitates faster, fairer grading."
+  },
+  {
+    "w": "Feasible",
+    "pos": "adj.",
+    "pron": "FEE-zuh-bul",
+    "def": "Possible to do easily or conveniently.",
+    "ex": "A daily practice habit is more feasible than a weekend cram."
+  },
+  {
+    "w": "Fortify",
+    "pos": "v.",
+    "pron": "FOR-tih-fy",
+    "def": "To strengthen or reinforce.",
+    "ex": "A strong portfolio can fortify a thin resume."
+  },
+  {
+    "w": "Frugal",
+    "pos": "adj.",
+    "pron": "FROO-gul",
+    "def": "Careful with money or resources; not wasteful.",
+    "ex": "Being frugal during a career transition buys more runway."
+  },
+  {
+    "w": "Gravitas",
+    "pos": "n.",
+    "pron": "GRAV-ih-tahs",
+    "def": "Seriousness or dignity of manner.",
+    "ex": "She spoke about the layoff with quiet gravitas."
+  },
+  {
+    "w": "Holistic",
+    "pos": "adj.",
+    "pron": "hoh-LIS-tik",
+    "def": "Considering the whole rather than just individual parts.",
+    "ex": "A holistic review looks at safety, accuracy, and tone together."
+  },
+  {
+    "w": "Impartial",
+    "pos": "adj.",
+    "pron": "im-PAR-shul",
+    "def": "Treating all sides equally; unbiased.",
+    "ex": "An impartial evaluator flags bias even in outputs they agree with."
+  },
+  {
+    "w": "Incisive",
+    "pos": "adj.",
+    "pron": "in-SY-siv",
+    "def": "Intelligently analytical and sharp.",
+    "ex": "Her incisive question exposed the flaw in the plan."
+  },
+  {
+    "w": "Ingenuity",
+    "pos": "n.",
+    "pron": "in-juh-NOO-ih-tee",
+    "def": "Cleverness or inventiveness.",
+    "ex": "Solving the problem with free tools took real ingenuity."
+  },
+  {
+    "w": "Innate",
+    "pos": "adj.",
+    "pron": "ih-NAYT",
+    "def": "Inborn; natural rather than learned.",
+    "ex": "Some people have an innate feel for spotting inconsistency."
+  },
+  {
+    "w": "Integral",
+    "pos": "adj.",
+    "pron": "IN-tih-grul",
+    "def": "Necessary to make a whole complete; essential.",
+    "ex": "Daily practice is integral to improving evaluation skills."
+  },
+  {
+    "w": "Intuitive",
+    "pos": "adj.",
+    "pron": "in-TOO-ih-tiv",
+    "def": "Easy to understand without conscious reasoning.",
+    "ex": "The dashboard's intuitive layout took no explaining."
+  },
+  {
+    "w": "Judicious",
+    "pos": "adj.",
+    "pron": "joo-DISH-us",
+    "def": "Having or showing good judgment; wise and careful.",
+    "ex": "She was judicious about which projects to take on."
+  },
+  {
+    "w": "Latent",
+    "pos": "adj.",
+    "pron": "LAY-tent",
+    "def": "Existing but not yet visible or active.",
+    "ex": "The interview revealed a latent talent for structured thinking."
+  },
+  {
+    "w": "Leverage",
+    "pos": "v.",
+    "pron": "LEV-er-ij",
+    "def": "To use something to maximum advantage.",
+    "ex": "She leveraged her staffing background into a compliance niche."
+  },
+  {
+    "w": "Lucrative",
+    "pos": "adj.",
+    "pron": "LOO-kruh-tiv",
+    "def": "Producing a good deal of profit.",
+    "ex": "AI evaluation can be a lucrative freelance path if you're consistent."
+  },
+  {
+    "w": "Meritorious",
+    "pos": "adj.",
+    "pron": "mer-ih-TOR-ee-us",
+    "def": "Deserving reward or praise.",
+    "ex": "His meritorious performance earned a spot on the top team."
+  },
+  {
+    "w": "Methodical",
+    "pos": "adj.",
+    "pron": "muh-THOD-ih-kul",
+    "def": "Done in an orderly, systematic way.",
+    "ex": "Her methodical job search beat scattershot applying every time."
+  },
+  {
+    "w": "Mitigate",
+    "pos": "v.",
+    "pron": "MIT-ih-gayt",
+    "def": "To make less severe or serious.",
+    "ex": "A clear rubric helps mitigate inconsistent scoring."
+  },
+  {
+    "w": "Nimble",
+    "pos": "adj.",
+    "pron": "NIM-bul",
+    "def": "Quick and light in movement or thought.",
+    "ex": "A nimble mind adapts fast when platform requirements change."
+  },
+  {
+    "w": "Objective",
+    "pos": "adj.",
+    "pron": "ub-JEK-tiv",
+    "def": "Not influenced by personal feelings; unbiased.",
+    "ex": "Stay objective, even when reviewing a response you personally like."
+  },
+  {
+    "w": "Optimal",
+    "pos": "adj.",
+    "pron": "OP-tih-mul",
+    "def": "Best or most favorable under the circumstances.",
+    "ex": "The optimal schedule left mornings free for focused practice."
+  },
+  {
+    "w": "Paramount",
+    "pos": "adj.",
+    "pron": "PAR-uh-mownt",
+    "def": "More important than anything else; supreme.",
+    "ex": "Safety is paramount, weighted above every other rubric criterion."
+  },
+  {
+    "w": "Perceptive",
+    "pos": "adj.",
+    "pron": "per-SEP-tiv",
+    "def": "Having keen insight or understanding.",
+    "ex": "A perceptive evaluator catches subtext, not just surface errors."
+  },
+  {
+    "w": "Perpetual",
+    "pos": "adj.",
+    "pron": "per-PECH-oo-ul",
+    "def": "Never ending or changing; constant.",
+    "ex": "Career transitions feel like a perpetual state of learning."
+  },
+  {
+    "w": "Persevere",
+    "pos": "v.",
+    "pron": "pur-suh-VEER",
+    "def": "To continue in a course of action despite difficulty.",
+    "ex": "She persevered through three rounds of ID verification."
+  },
+  {
+    "w": "Pertinent",
+    "pos": "adj.",
+    "pron": "PUR-tih-nent",
+    "def": "Relevant or applicable to the matter at hand.",
+    "ex": "Keep feedback pertinent to the rubric, not personal taste."
+  },
+  {
+    "w": "Plausible",
+    "pos": "adj.",
+    "pron": "PLAW-zih-bul",
+    "def": "Seeming reasonable or probable.",
+    "ex": "The model's answer sounded plausible but was subtly wrong."
+  },
+  {
+    "w": "Poise",
+    "pos": "n.",
+    "pron": "POYZ",
+    "def": "Graceful composure, especially under pressure.",
+    "ex": "She answered the panel's questions with poise."
+  },
+  {
+    "w": "Prevail",
+    "pos": "v.",
+    "pron": "prih-VAYL",
+    "def": "To prove more powerful or successful; to win out.",
+    "ex": "Patience prevailed over three months of rejections."
+  },
+  {
+    "w": "Proactive",
+    "pos": "adj.",
+    "pron": "proh-AK-tiv",
+    "def": "Acting in advance to deal with an expected difficulty.",
+    "ex": "She was proactive, applying before the listing even trended."
+  },
+  {
+    "w": "Proficient",
+    "pos": "adj.",
+    "pron": "pruh-FISH-ent",
+    "def": "Competent or skilled in doing something.",
+    "ex": "He became proficient at spotting hallucinated citations."
+  },
+  {
+    "w": "Prolific",
+    "pos": "adj.",
+    "pron": "pruh-LIF-ik",
+    "def": "Producing much in a fast, abundant manner.",
+    "ex": "A prolific writer, she drafted five cover letters a day."
+  },
+  {
+    "w": "Prudence",
+    "pos": "n.",
+    "pron": "PROO-dens",
+    "def": "Careful, sensible judgment, especially about practical matters.",
+    "ex": "Prudence during the job hunt meant saving instead of splurging."
+  },
+  {
+    "w": "Rapport",
+    "pos": "n.",
+    "pron": "ra-POR",
+    "def": "A close, harmonious relationship built on mutual understanding.",
+    "ex": "She built rapport with the interviewer in the first minute."
+  },
+  {
+    "w": "Refine",
+    "pos": "v.",
+    "pron": "rih-FYNE",
+    "def": "To improve by making small changes.",
+    "ex": "Each draft helped refine her resume's tone."
+  },
+  {
+    "w": "Resolute",
+    "pos": "adj.",
+    "pron": "REZ-uh-loot",
+    "def": "Admirably purposeful and determined.",
+    "ex": "He stayed resolute even after the third rejection email."
+  },
+  {
+    "w": "Resourceful",
+    "pos": "adj.",
+    "pron": "rih-SORS-ful",
+    "def": "Skilled at finding quick, clever solutions to problems.",
+    "ex": "Being resourceful, she found free tools instead of paid ones."
+  },
+  {
+    "w": "Salient",
+    "pos": "adj.",
+    "pron": "SAY-lee-ent",
+    "def": "Most noticeable or important.",
+    "ex": "The salient issue was tone, not grammar."
+  },
+  {
+    "w": "Scrupulous",
+    "pos": "adj.",
+    "pron": "SKROO-pyuh-lus",
+    "def": "Diligent, thorough, and careful about details.",
+    "ex": "Scrupulous note-taking made her feedback easy to defend."
+  },
+  {
+    "w": "Shrewd",
+    "pos": "adj.",
+    "pron": "SHROOD",
+    "def": "Having sharp powers of judgment; astute.",
+    "ex": "A shrewd negotiator knows when to stay quiet."
+  },
+  {
+    "w": "Solvent",
+    "pos": "adj.",
+    "pron": "SOL-vent",
+    "def": "Having enough money to cover debts; financially stable.",
+    "ex": "Staying solvent during a career change means budgeting tightly."
+  },
+  {
+    "w": "Stalwart",
+    "pos": "adj.",
+    "pron": "STAWL-wurt",
+    "def": "Loyal, reliable, and hardworking.",
+    "ex": "Her stalwart discipline carried her through the slow weeks."
+  },
+  {
+    "w": "Steward",
+    "pos": "v.",
+    "pron": "STOO-erd",
+    "def": "To manage or look after responsibly.",
+    "ex": "She stewarded the project's budget with real care."
+  },
+  {
+    "w": "Stringent",
+    "pos": "adj.",
+    "pron": "STRIN-junt",
+    "def": "Strict, precise, and rigorously enforced.",
+    "ex": "The platform's stringent guidelines rejected any vague answer."
+  },
+  {
+    "w": "Substantive",
+    "pos": "adj.",
+    "pron": "sub-STAN-tiv",
+    "def": "Having a firm basis in reality; meaningful.",
+    "ex": "She wanted substantive feedback, not just a thumbs up."
+  },
+  {
+    "w": "Succinct",
+    "pos": "adj.",
+    "pron": "suk-SINKT",
+    "def": "Briefly and clearly expressed.",
+    "ex": "A succinct bullet beats a wordy paragraph every time."
+  },
+  {
+    "w": "Synthesize",
+    "pos": "v.",
+    "pron": "SIN-thuh-syz",
+    "def": "To combine separate elements into a coherent whole.",
+    "ex": "She synthesized six sources into one clear evaluation."
+  },
+  {
+    "w": "Tangible",
+    "pos": "adj.",
+    "pron": "TAN-jih-bul",
+    "def": "Clear and definite; perceptible by touch.",
+    "ex": "A finished portfolio is tangible proof of the work."
+  },
+  {
+    "w": "Tenable",
+    "pos": "adj.",
+    "pron": "TEN-uh-bul",
+    "def": "Able to be defended or maintained.",
+    "ex": "Her position was tenable once she added supporting data."
+  },
+  {
+    "w": "Transparent",
+    "pos": "adj.",
+    "pron": "tranz-PAIR-ent",
+    "def": "Easy to perceive or detect; open and honest.",
+    "ex": "Transparent reasoning is one of the four rubric pillars."
+  },
+  {
+    "w": "Unwavering",
+    "pos": "adj.",
+    "pron": "un-WAY-ver-ing",
+    "def": "Steady and not changing.",
+    "ex": "Her unwavering focus got her through the slowest month."
+  },
+  {
+    "w": "Validate",
+    "pos": "v.",
+    "pron": "VAL-ih-dayt",
+    "def": "To confirm the accuracy or worth of something.",
+    "ex": "Always validate a claim before scoring the response as accurate."
+  },
+  {
+    "w": "Versatile",
+    "pos": "adj.",
+    "pron": "VUR-suh-tyle",
+    "def": "Able to adapt to many different functions.",
+    "ex": "Her versatile background spans staffing, sales, and compliance."
+  },
+  {
+    "w": "Vigilant",
+    "pos": "adj.",
+    "pron": "VIJ-uh-lunt",
+    "def": "Keeping careful watch for possible danger or difficulty.",
+    "ex": "Stay vigilant for subtle bias hiding in a confident answer."
+  },
+  {
+    "w": "Viable",
+    "pos": "adj.",
+    "pron": "VY-uh-bul",
+    "def": "Capable of working successfully; feasible.",
+    "ex": "A viable plan needs a realistic timeline, not just ambition."
+  },
+  {
+    "w": "Zealous",
+    "pos": "adj.",
+    "pron": "ZEL-us",
+    "def": "Showing great energy and enthusiasm for a cause.",
+    "ex": "She was zealous about getting every detail of the rubric right."
+  },
+  {
+    "w": "Acumen",
+    "pos": "n.",
+    "pron": "AK-yoo-men",
+    "def": "Keen insight and good judgment, especially in practical matters.",
+    "ex": "Her business acumen showed in every negotiation."
+  },
+  {
+    "w": "Adroit",
+    "pos": "adj.",
+    "pron": "uh-DROYT",
+    "def": "Clever and skillful, especially under pressure.",
+    "ex": "He was adroit at reframing setbacks as lessons."
+  },
+  {
+    "w": "Affable",
+    "pos": "adj.",
+    "pron": "AF-uh-bul",
+    "def": "Friendly, good-natured, and easy to talk to.",
+    "ex": "The recruiter was affable, which put her at ease instantly."
+  },
+  {
+    "w": "Amiable",
+    "pos": "adj.",
+    "pron": "AY-mee-uh-bul",
+    "def": "Having a friendly and pleasant manner.",
+    "ex": "An amiable tone in feedback lands better than a harsh one."
+  },
+  {
+    "w": "Analogous",
+    "pos": "adj.",
+    "pron": "uh-NAL-uh-gus",
+    "def": "Comparable in certain respects; similar.",
+    "ex": "Grading AI responses is analogous to peer-reviewing an essay."
+  },
+  {
+    "w": "Anecdotal",
+    "pos": "adj.",
+    "pron": "an-ik-DOH-tul",
+    "def": "Based on personal accounts rather than facts or research.",
+    "ex": "One anecdotal success story isn't proof the method works for everyone."
+  },
+  {
+    "w": "Anomaly",
+    "pos": "n.",
+    "pron": "uh-NOM-uh-lee",
+    "def": "Something that deviates from the norm.",
+    "ex": "A single anomalous score didn't change the overall pattern."
+  },
+  {
+    "w": "Ambiguous",
+    "pos": "adj.",
+    "pron": "am-BIG-yoo-us",
+    "def": "Open to more than one interpretation; unclear.",
+    "ex": "The prompt was ambiguous enough that two graders disagreed."
+  },
+  {
+    "w": "Amass",
+    "pos": "v.",
+    "pron": "uh-MAS",
+    "def": "To gather together a large amount over time.",
+    "ex": "She amassed a decent portfolio in just six weeks."
+  },
+  {
+    "w": "Assiduous",
+    "pos": "adj.",
+    "pron": "uh-SID-yoo-us",
+    "def": "Showing great care and perseverance.",
+    "ex": "His assiduous note-taking paid off during review week."
+  },
+  {
+    "w": "Autonomy",
+    "pos": "n.",
+    "pron": "aw-TON-uh-mee",
+    "def": "The freedom to act independently.",
+    "ex": "She valued autonomy over a rigid nine-to-five schedule."
+  },
+  {
+    "w": "Benevolent",
+    "pos": "adj.",
+    "pron": "buh-NEV-uh-lent",
+    "def": "Well meaning and kindly.",
+    "ex": "A benevolent manager gives feedback without condescension."
+  },
+  {
+    "w": "Buoyant",
+    "pos": "adj.",
+    "pron": "BOY-ent",
+    "def": "Cheerful and optimistic; able to stay afloat.",
+    "ex": "She stayed buoyant even after a slow application week."
+  },
+  {
+    "w": "Catalyst",
+    "pos": "n.",
+    "pron": "KAT-uh-list",
+    "def": "A person or thing that provokes significant change.",
+    "ex": "The layoff became the catalyst for her career pivot."
+  },
+  {
+    "w": "Cerebral",
+    "pos": "adj.",
+    "pron": "suh-REE-brul",
+    "def": "Intellectual rather than emotional or physical.",
+    "ex": "The interview leaned cerebral, all logic puzzles and reasoning."
+  },
+  {
+    "w": "Concur",
+    "pos": "v.",
+    "pron": "kun-KUR",
+    "def": "To agree.",
+    "ex": "Both reviewers concurred the response was accurate but unsafe."
+  },
+  {
+    "w": "Conducive",
+    "pos": "adj.",
+    "pron": "kun-DOO-siv",
+    "def": "Making a certain outcome likely or possible.",
+    "ex": "A quiet morning routine is conducive to focused practice."
+  },
+  {
+    "w": "Consensus",
+    "pos": "n.",
+    "pron": "kun-SEN-sus",
+    "def": "General agreement among a group.",
+    "ex": "The panel reached consensus after comparing notes."
+  },
+  {
+    "w": "Convention",
+    "pos": "n.",
+    "pron": "kun-VEN-shun",
+    "def": "A generally accepted practice or method.",
+    "ex": "She broke convention by leading her resume with a summary, not a title."
+  },
+  {
+    "w": "Corroborate",
+    "pos": "v.",
+    "pron": "kuh-ROB-uh-rayt",
+    "def": "To confirm or give support to a statement.",
+    "ex": "A second source corroborated the claim before she cited it."
+  },
+  {
+    "w": "Credible",
+    "pos": "adj.",
+    "pron": "KRED-uh-bul",
+    "def": "Able to be believed; convincing.",
+    "ex": "A credible answer cites its reasoning, not just a conclusion."
+  },
+  {
+    "w": "Cursory",
+    "pos": "adj.",
+    "pron": "KUR-suh-ree",
+    "def": "Hasty and therefore not thorough.",
+    "ex": "A cursory read missed the error a careful one would catch."
+  },
+  {
+    "w": "Deduce",
+    "pos": "v.",
+    "pron": "dih-DOOS",
+    "def": "To arrive at a conclusion by reasoning.",
+    "ex": "She deduced the model's error from a single mismatched date."
+  },
+  {
+    "w": "Demeanor",
+    "pos": "n.",
+    "pron": "dih-MEE-ner",
+    "def": "Outward behavior or bearing.",
+    "ex": "Her calm demeanor during the panel interview stood out."
+  },
+  {
+    "w": "Dexterity",
+    "pos": "n.",
+    "pron": "dek-STER-ih-tee",
+    "def": "Skill in performing tasks, especially with the hands or mind.",
+    "ex": "Mental dexterity matters more than speed in evaluation work."
+  },
+  {
+    "w": "Discrepancy",
+    "pos": "n.",
+    "pron": "dih-SKREP-un-see",
+    "def": "A lack of agreement between facts or claims.",
+    "ex": "The discrepancy between the two answers flagged an error."
+  },
+  {
+    "w": "Disseminate",
+    "pos": "v.",
+    "pron": "dih-SEM-ih-nayt",
+    "def": "To spread information widely.",
+    "ex": "The team disseminated the updated rubric to every evaluator."
+  },
+  {
+    "w": "Divergent",
+    "pos": "adj.",
+    "pron": "dy-VUR-junt",
+    "def": "Tending to differ or develop in different directions.",
+    "ex": "The two graders gave divergent scores on the same response."
+  },
+  {
+    "w": "Empirical",
+    "pos": "adj.",
+    "pron": "em-PEER-ih-kul",
+    "def": "Based on observation or experience rather than theory.",
+    "ex": "Empirical evidence, not assumption, should decide the score."
+  },
+  {
+    "w": "Enumerate",
+    "pos": "v.",
+    "pron": "ih-NOO-muh-rayt",
+    "def": "To mention a number of things one by one.",
+    "ex": "She enumerated every requirement before starting the application."
+  },
+  {
+    "w": "Ephemeral",
+    "pos": "adj.",
+    "pron": "ih-FEM-er-ul",
+    "def": "Lasting for a very short time.",
+    "ex": "Motivation is ephemeral; a routine outlasts it."
+  },
+  {
+    "w": "Equitable",
+    "pos": "adj.",
+    "pron": "EK-wih-tuh-bul",
+    "def": "Fair and impartial.",
+    "ex": "An equitable rubric applies the same standard to every response."
+  },
+  {
+    "w": "Erudite",
+    "pos": "adj.",
+    "pron": "AIR-yoo-dyte",
+    "def": "Having or showing great knowledge or learning.",
+    "ex": "His erudite answer drew on three unrelated fields."
+  },
+  {
+    "w": "Espouse",
+    "pos": "v.",
+    "pron": "ih-SPOWZ",
+    "def": "To support or adopt a cause or belief.",
+    "ex": "She espoused a calm, systems-first approach to the job hunt."
+  },
+  {
+    "w": "Explicit",
+    "pos": "adj.",
+    "pron": "ik-SPLIS-it",
+    "def": "Stated clearly and in detail, leaving no room for confusion.",
+    "ex": "An explicit rubric prevents inconsistent grading."
+  },
+  {
+    "w": "Extraneous",
+    "pos": "adj.",
+    "pron": "ik-STRAY-nee-us",
+    "def": "Irrelevant or unrelated to the subject.",
+    "ex": "Cut the extraneous detail; keep only what supports the claim."
+  },
+  {
+    "w": "Fastidious",
+    "pos": "adj.",
+    "pron": "fa-STID-ee-us",
+    "def": "Very attentive to detail; hard to please.",
+    "ex": "Her fastidious proofreading caught a typo everyone else missed."
+  },
+  {
+    "w": "Feckless",
+    "pos": "adj.",
+    "pron": "FEK-lis",
+    "def": "Lacking initiative or sense of responsibility.",
+    "ex": "A feckless approach to deadlines cost him the contract."
+  },
+  {
+    "w": "Fervent",
+    "pos": "adj.",
+    "pron": "FUR-vent",
+    "def": "Having or showing intense feeling; passionate.",
+    "ex": "She gave a fervent defense of her scoring decision."
+  },
+  {
+    "w": "Formidable",
+    "pos": "adj.",
+    "pron": "FOR-mih-duh-bul",
+    "def": "Inspiring respect through being impressively capable.",
+    "ex": "The application pool was formidable, but her portfolio stood out."
+  },
+  {
+    "w": "Fruitful",
+    "pos": "adj.",
+    "pron": "FROOT-ful",
+    "def": "Producing good or helpful results.",
+    "ex": "The feedback session was more fruitful than the interview itself."
+  },
+  {
+    "w": "Galvanize",
+    "pos": "v.",
+    "pron": "GAL-vuh-nyze",
+    "def": "To shock or excite into sudden action.",
+    "ex": "The rejection galvanized her to rebuild the whole resume."
+  },
+  {
+    "w": "Genuine",
+    "pos": "adj.",
+    "pron": "JEN-yoo-in",
+    "def": "Truly what it is claimed to be; sincere.",
+    "ex": "A genuine tone in a cover letter beats a polished but hollow one."
+  },
+  {
+    "w": "Germane",
+    "pos": "adj.",
+    "pron": "jer-MAYN",
+    "def": "Relevant to a subject under consideration.",
+    "ex": "Keep your answer germane to the prompt, not tangential."
+  },
+  {
+    "w": "Grapple",
+    "pos": "v.",
+    "pron": "GRAP-ul",
+    "def": "To engage in a firm grip; to struggle with a difficult problem.",
+    "ex": "She grappled with how to frame a career gap honestly."
+  },
+  {
+    "w": "Gregarious",
+    "pos": "adj.",
+    "pron": "grih-GAIR-ee-us",
+    "def": "Sociable; fond of company.",
+    "ex": "He was gregarious in interviews, which put panels at ease."
+  },
+  {
+    "w": "Hallmark",
+    "pos": "n.",
+    "pron": "HAWL-mark",
+    "def": "A distinctive feature or quality.",
+    "ex": "Clarity is the hallmark of a strong evaluation."
+  },
+  {
+    "w": "Hindsight",
+    "pos": "n.",
+    "pron": "HYND-syte",
+    "def": "Understanding of a situation only after it has happened.",
+    "ex": "In hindsight, she should have applied to that role months earlier."
+  },
+  {
+    "w": "Homogeneous",
+    "pos": "adj.",
+    "pron": "hoh-muh-JEE-nee-us",
+    "def": "Of the same kind; uniform throughout.",
+    "ex": "The training data wasn't homogeneous enough to catch every edge case."
+  },
+  {
+    "w": "Hypothesis",
+    "pos": "n.",
+    "pron": "hy-POTH-uh-sis",
+    "def": "A proposed explanation made on limited evidence.",
+    "ex": "Her hypothesis was that structure mattered more than length."
+  },
+  {
+    "w": "Illustrative",
+    "pos": "adj.",
+    "pron": "ih-LUS-truh-tiv",
+    "def": "Serving as a useful example.",
+    "ex": "She kept one illustrative case from each rubric category."
+  },
+  {
+    "w": "Immerse",
+    "pos": "v.",
+    "pron": "ih-MURS",
+    "def": "To involve deeply in an activity or interest.",
+    "ex": "She immersed herself in daily evaluation practice for a month straight."
+  },
+  {
+    "w": "Impeccable",
+    "pos": "adj.",
+    "pron": "im-PEK-uh-bul",
+    "def": "Without flaws or errors; perfect.",
+    "ex": "His grammar was impeccable, but the reasoning wasn't."
+  },
+  {
+    "w": "Imperative",
+    "pos": "adj.",
+    "pron": "im-PER-uh-tiv",
+    "def": "Of vital importance; crucial.",
+    "ex": "Consistency is imperative when scoring across hundreds of responses."
+  },
+  {
+    "w": "Implicit",
+    "pos": "adj.",
+    "pron": "im-PLIS-it",
+    "def": "Implied though not plainly expressed.",
+    "ex": "The bias was implicit, never stated outright."
+  },
+  {
+    "w": "Incumbent",
+    "pos": "adj.",
+    "pron": "in-KUM-bent",
+    "def": "Necessary for someone as a duty or responsibility.",
+    "ex": "It's incumbent on the reviewer to flag every safety concern."
+  },
+  {
+    "w": "Indispensable",
+    "pos": "adj.",
+    "pron": "in-dih-SPEN-suh-bul",
+    "def": "Absolutely necessary.",
+    "ex": "A clear rubric is indispensable for consistent grading."
+  },
+  {
+    "w": "Inference",
+    "pos": "n.",
+    "pron": "IN-fer-ens",
+    "def": "A conclusion reached on the basis of evidence and reasoning.",
+    "ex": "Her inference was correct, but she should have stated her reasoning."
+  },
+  {
+    "w": "Ingenious",
+    "pos": "adj.",
+    "pron": "in-JEEN-yus",
+    "def": "Clever, original, and inventive.",
+    "ex": "His ingenious workaround solved a problem the platform hadn't addressed."
+  },
+  {
+    "w": "Innocuous",
+    "pos": "adj.",
+    "pron": "ih-NOK-yoo-us",
+    "def": "Not harmful or offensive.",
+    "ex": "The phrase seemed innocuous but carried a subtle bias."
+  },
+  {
+    "w": "Insightful",
+    "pos": "adj.",
+    "pron": "IN-syte-ful",
+    "def": "Having or showing deep understanding.",
+    "ex": "Her insightful comment reframed the whole discussion."
+  },
+  {
+    "w": "Instill",
+    "pos": "v.",
+    "pron": "in-STIL",
+    "def": "To gradually establish an idea or attitude in someone.",
+    "ex": "Daily practice instilled real confidence in her evaluations."
+  },
+  {
+    "w": "Intrepid",
+    "pos": "adj.",
+    "pron": "in-TREP-id",
+    "def": "Fearless and adventurous.",
+    "ex": "It took an intrepid mindset to change careers at this stage."
+  },
+  {
+    "w": "Intricate",
+    "pos": "adj.",
+    "pron": "IN-trih-kit",
+    "def": "Very complicated or detailed.",
+    "ex": "The scoring rubric was more intricate than it first appeared."
+  },
+  {
+    "w": "Intuit",
+    "pos": "v.",
+    "pron": "in-TOO-it",
+    "def": "To understand by instinct rather than reasoning.",
+    "ex": "She could intuit which answers were subtly off, even before checking the rubric."
+  },
+  {
+    "w": "Juxtapose",
+    "pos": "v.",
+    "pron": "JUK-stuh-pohz",
+    "def": "To place side by side for comparison.",
+    "ex": "Juxtaposing the two responses made the quality gap obvious."
+  },
+  {
+    "w": "Keen",
+    "pos": "adj.",
+    "pron": "KEEN",
+    "def": "Having or showing eagerness or enthusiasm; sharp.",
+    "ex": "She had a keen eye for spotting hallucinated facts."
+  },
+  {
+    "w": "Latitude",
+    "pos": "n.",
+    "pron": "LAT-ih-tood",
+    "def": "Freedom from restriction in action or opinion.",
+    "ex": "The role gave her real latitude over her own schedule."
+  },
+  {
+    "w": "Legitimate",
+    "pos": "adj.",
+    "pron": "luh-JIT-uh-mit",
+    "def": "Conforming to the law or to rules; genuine.",
+    "ex": "She double-checked that the opportunity was legitimate before applying."
+  },
+  {
+    "w": "Lenient",
+    "pos": "adj.",
+    "pron": "LEE-nee-ent",
+    "def": "Permissive; not harsh or strict.",
+    "ex": "A lenient grader misses errors a strict one would catch."
+  },
+  {
+    "w": "Linchpin",
+    "pos": "n.",
+    "pron": "LINCH-pin",
+    "def": "A person or thing vital to an enterprise.",
+    "ex": "Clear communication was the linchpin of the whole process."
+  },
+  {
+    "w": "Malleable",
+    "pos": "adj.",
+    "pron": "MAL-ee-uh-bul",
+    "def": "Easily influenced or shaped.",
+    "ex": "Early in a career pivot, plans should stay malleable."
+  },
+  {
+    "w": "Mandate",
+    "pos": "n.",
+    "pron": "MAN-dayt",
+    "def": "An official order or authorization to act.",
+    "ex": "The rubric gave evaluators a clear mandate to prioritize safety."
+  },
+  {
+    "w": "Manifest",
+    "pos": "v.",
+    "pron": "MAN-uh-fest",
+    "def": "To display or show a quality clearly.",
+    "ex": "Her discipline manifested in a spotless application tracker."
+  },
+  {
+    "w": "Meager",
+    "pos": "adj.",
+    "pron": "MEE-ger",
+    "def": "Lacking in quantity or quality.",
+    "ex": "The feedback was meager, just a single line."
+  },
+  {
+    "w": "Mediate",
+    "pos": "v.",
+    "pron": "MEE-dee-ayt",
+    "def": "To intervene to resolve a dispute.",
+    "ex": "She had to mediate between two graders with opposite scores."
+  },
+  {
+    "w": "Mundane",
+    "pos": "adj.",
+    "pron": "mun-DAYN",
+    "def": "Lacking interest or excitement; ordinary.",
+    "ex": "Even mundane tasks like formatting matter in a professional resume."
+  },
+  {
+    "w": "Myriad",
+    "pos": "adj./n.",
+    "pron": "MEER-ee-ud",
+    "def": "A very great number of.",
+    "ex": "A myriad of small choices shaped her final portfolio."
+  },
+  {
+    "w": "Nascent",
+    "pos": "adj.",
+    "pron": "NAY-sent",
+    "def": "Just beginning to exist or develop.",
+    "ex": "Her nascent skills in evaluation grew fast with daily practice."
+  },
+  {
+    "w": "Nefarious",
+    "pos": "adj.",
+    "pron": "nih-FAIR-ee-us",
+    "def": "Wicked or criminal.",
+    "ex": "The rubric flagged even subtly nefarious suggestions."
+  },
+  {
+    "w": "Negate",
+    "pos": "v.",
+    "pron": "nih-GAYT",
+    "def": "To nullify or make ineffective.",
+    "ex": "One factual error can negate an otherwise strong answer."
+  },
+  {
+    "w": "Notion",
+    "pos": "n.",
+    "pron": "NOH-shun",
+    "def": "A general idea or belief.",
+    "ex": "Her notion of a Life OS grew out of a simple PARA setup."
+  },
+  {
+    "w": "Novel",
+    "pos": "adj.",
+    "pron": "NOV-ul",
+    "def": "New and original, not previously known.",
+    "ex": "She took a novel approach to organizing her job search."
+  },
+  {
+    "w": "Objectivity",
+    "pos": "n.",
+    "pron": "ob-jek-TIV-ih-tee",
+    "def": "Freedom from bias based on personal feelings.",
+    "ex": "Objectivity matters more in grading than personal preference."
+  },
+  {
+    "w": "Obscure",
+    "pos": "adj.",
+    "pron": "ub-SKYOOR",
+    "def": "Not clearly expressed or easy to understand.",
+    "ex": "The instructions were obscure until she reread them twice."
+  },
+  {
+    "w": "Onerous",
+    "pos": "adj.",
+    "pron": "OH-ner-us",
+    "def": "Involving a heavy burden; oppressive.",
+    "ex": "The ID verification process felt onerous but was necessary."
+  },
+  {
+    "w": "Optimize",
+    "pos": "v.",
+    "pron": "OP-tih-myze",
+    "def": "To make the best or most effective use of.",
+    "ex": "She optimized her schedule around her most focused hours."
+  },
+  {
+    "w": "Orient",
+    "pos": "v.",
+    "pron": "OR-ee-ent",
+    "def": "To familiarize someone with a new situation.",
+    "ex": "The first week was spent orienting herself to the platform's rubric."
+  },
+  {
+    "w": "Ostensible",
+    "pos": "adj.",
+    "pron": "o-STEN-sih-bul",
+    "def": "Stated or appearing to be true, though not necessarily so.",
+    "ex": "The ostensible reason for the delay wasn't the real one."
+  },
+  {
+    "w": "Overt",
+    "pos": "adj.",
+    "pron": "oh-VURT",
+    "def": "Done or shown openly; not secret.",
+    "ex": "The bias in the response was overt, not subtle."
+  },
+  {
+    "w": "Paradigm",
+    "pos": "n.",
+    "pron": "PAIR-uh-dyme",
+    "def": "A typical example or pattern of something.",
+    "ex": "Her resume became a paradigm for others transitioning careers."
+  },
+  {
+    "w": "Peripheral",
+    "pos": "adj.",
+    "pron": "puh-RIF-er-ul",
+    "def": "Of secondary or minor importance.",
+    "ex": "Grammar was peripheral; the reasoning error was the real issue."
+  },
+  {
+    "w": "Perpetuate",
+    "pos": "v.",
+    "pron": "per-PECH-oo-ayt",
+    "def": "To make something continue indefinitely.",
+    "ex": "Vague feedback perpetuates the same mistakes."
+  },
+  {
+    "w": "Persistent",
+    "pos": "adj.",
+    "pron": "per-SIS-tent",
+    "def": "Continuing firmly despite difficulty or opposition.",
+    "ex": "Persistent daily practice mattered more than any single big effort."
+  },
+  {
+    "w": "Pervasive",
+    "pos": "adj.",
+    "pron": "per-VAY-siv",
+    "def": "Spreading widely throughout an area or group.",
+    "ex": "The bias was pervasive across nearly every response in the batch."
+  },
+  {
+    "w": "Pinnacle",
+    "pos": "n.",
+    "pron": "PIN-uh-kul",
+    "def": "The most successful point; the peak.",
+    "ex": "Landing the role felt like the pinnacle of months of work."
+  },
+  {
+    "w": "Plausibility",
+    "pos": "n.",
+    "pron": "plaw-zih-BIL-ih-tee",
+    "def": "The quality of seeming reasonable or probable.",
+    "ex": "She questioned the plausibility of the claim before accepting it."
+  },
+  {
+    "w": "Poignant",
+    "pos": "adj.",
+    "pron": "POYN-yunt",
+    "def": "Evoking a keen sense of sadness or regret.",
+    "ex": "Her poignant story of the layoff resonated in the interview."
+  },
+  {
+    "w": "Precarious",
+    "pos": "adj.",
+    "pron": "prih-KAIR-ee-us",
+    "def": "Not securely held or in a dangerous position.",
+    "ex": "Freelance income felt precarious until she diversified platforms."
+  },
+  {
+    "w": "Precedent",
+    "pos": "n.",
+    "pron": "PRES-ih-dent",
+    "def": "An earlier event used as a guide for later ones.",
+    "ex": "Her strong first submission set a precedent for the rest of her work."
+  },
+  {
+    "w": "Precipitate",
+    "pos": "v.",
+    "pron": "prih-SIP-ih-tayt",
+    "def": "To cause an event to happen suddenly.",
+    "ex": "The layoff precipitated a complete career rethink."
+  },
+  {
+    "w": "Preclude",
+    "pos": "v.",
+    "pron": "prih-KLOOD",
+    "def": "To prevent from happening; make impossible.",
+    "ex": "A missing ID didn't preclude her from other platform tasks."
+  },
+  {
+    "w": "Premise",
+    "pos": "n.",
+    "pron": "PREM-is",
+    "def": "A statement taken as true, on which an argument is based.",
+    "ex": "The whole evaluation rested on a faulty premise."
+  },
+  {
+    "w": "Prerequisite",
+    "pos": "n.",
+    "pron": "pree-REK-wih-zit",
+    "def": "A thing required as a prior condition.",
+    "ex": "Daily practice became a prerequisite for real improvement."
+  },
+  {
+    "w": "Prevalent",
+    "pos": "adj.",
+    "pron": "PREV-uh-lent",
+    "def": "Widespread in a particular area at a particular time.",
+    "ex": "Vague resumes are prevalent; specific ones stand out."
+  },
+  {
+    "w": "Proponent",
+    "pos": "n.",
+    "pron": "pruh-POH-nent",
+    "def": "A person who argues in favor of something.",
+    "ex": "She became a proponent of structured, rubric-based feedback."
+  },
+  {
+    "w": "Prospective",
+    "pos": "adj.",
+    "pron": "pruh-SPEK-tiv",
+    "def": "Expected or likely to happen; potential.",
+    "ex": "She researched every prospective employer before applying."
+  },
+  {
+    "w": "Provisional",
+    "pos": "adj.",
+    "pron": "pruh-VIZH-uh-nul",
+    "def": "Arranged for the present, possibly to be changed later.",
+    "ex": "The offer was provisional pending background checks."
+  },
+  {
+    "w": "Quandary",
+    "pos": "n.",
+    "pron": "KWON-duh-ree",
+    "def": "A state of uncertainty over what to do.",
+    "ex": "She was in a quandary over which platform to prioritize."
+  },
+  {
+    "w": "Quantify",
+    "pos": "v.",
+    "pron": "KWON-tih-fy",
+    "def": "To express or measure as a quantity.",
+    "ex": "She quantified her impact with real numbers on her resume."
+  },
+  {
+    "w": "Rationale",
+    "pos": "n.",
+    "pron": "rash-uh-NAL",
+    "def": "A set of reasons for a course of action.",
+    "ex": "Every rubric score needs a clear rationale attached."
+  },
+  {
+    "w": "Recalibrate",
+    "pos": "v.",
+    "pron": "ree-KAL-ih-brayt",
+    "def": "To adjust or reset something again.",
+    "ex": "She had to recalibrate her timeline after the first delay."
+  },
+  {
+    "w": "Reciprocal",
+    "pos": "adj.",
+    "pron": "rih-SIP-ruh-kul",
+    "def": "Given or done in return; mutual.",
+    "ex": "Good feedback is reciprocal — both sides learn something."
+  },
+  {
+    "w": "Reconcile",
+    "pos": "v.",
+    "pron": "REK-un-syle",
+    "def": "To make consistent or compatible.",
+    "ex": "She reconciled the two conflicting scores after a second read."
+  },
+  {
+    "w": "Redundant",
+    "pos": "adj.",
+    "pron": "rih-DUN-dunt",
+    "def": "Not or no longer needed; superfluous.",
+    "ex": "She cut redundant bullet points from her resume."
+  },
+  {
+    "w": "Refute",
+    "pos": "v.",
+    "pron": "rih-FYOOT",
+    "def": "To prove a statement or theory to be wrong.",
+    "ex": "She refuted the claim with a single counter-example."
+  },
+  {
+    "w": "Relevant",
+    "pos": "adj.",
+    "pron": "REL-uh-vunt",
+    "def": "Closely connected or appropriate to the matter at hand.",
+    "ex": "Keep every bullet point relevant to the job description."
+  },
+  {
+    "w": "Reprieve",
+    "pos": "n.",
+    "pron": "rih-PREEV",
+    "def": "A delay or cancellation of a punishment or unpleasant event.",
+    "ex": "The extra week felt like a reprieve before the deadline."
+  },
+  {
+    "w": "Repudiate",
+    "pos": "v.",
+    "pron": "rih-PYOO-dee-ayt",
+    "def": "To refuse to accept or be associated with.",
+    "ex": "She repudiated the outdated assumption in her old resume."
+  },
+  {
+    "w": "Resonate",
+    "pos": "v.",
+    "pron": "REZ-uh-nayt",
+    "def": "To evoke or suggest images, memories, or emotions.",
+    "ex": "Her career-change story resonated with the interview panel."
+  },
+  {
+    "w": "Retrospect",
+    "pos": "n.",
+    "pron": "RET-ruh-spekt",
+    "def": "A survey or review of a past course of events.",
+    "ex": "In retrospect, the layoff was the push she needed."
+  },
+  {
+    "w": "Rhetoric",
+    "pos": "n.",
+    "pron": "RET-er-ik",
+    "def": "The art of effective or persuasive speaking or writing.",
+    "ex": "Strong rhetoric alone can't fix a factually wrong answer."
+  },
+  {
+    "w": "Robust",
+    "pos": "adj.",
+    "pron": "roh-BUST",
+    "def": "Strong and healthy; able to withstand pressure.",
+    "ex": "A robust rubric holds up even under edge cases."
+  },
+  {
+    "w": "Rudimentary",
+    "pos": "adj.",
+    "pron": "roo-dih-MEN-tuh-ree",
+    "def": "Basic or fundamental.",
+    "ex": "She started with a rudimentary tracker before building it out."
+  },
+  {
+    "w": "Sanction",
+    "pos": "v./n.",
+    "pron": "SANK-shun",
+    "def": "Official permission; or, a penalty for disobedience.",
+    "ex": "The platform gave sanction to use outside references sparingly."
+  },
+  {
+    "w": "Scrutinize",
+    "pos": "v.",
+    "pron": "SKROOT-ih-nyze",
+    "def": "To examine closely and critically.",
+    "ex": "She scrutinized every response before submitting a score."
+  },
+  {
+    "w": "Semblance",
+    "pos": "n.",
+    "pron": "SEM-bluns",
+    "def": "The outward appearance of something.",
+    "ex": "The answer had a semblance of accuracy but fell apart on inspection."
+  },
+  {
+    "w": "Skeptical",
+    "pos": "adj.",
+    "pron": "SKEP-tih-kul",
+    "def": "Not easily convinced; having doubts.",
+    "ex": "Stay skeptical of confident-sounding but unverified claims."
+  },
+  {
+    "w": "Solicit",
+    "pos": "v.",
+    "pron": "suh-LIS-it",
+    "def": "To ask for or try to obtain.",
+    "ex": "She solicited feedback from three different mentors."
+  },
+  {
+    "w": "Sparse",
+    "pos": "adj.",
+    "pron": "SPARS",
+    "def": "Thinly dispersed or scattered; scanty.",
+    "ex": "The evidence for the claim was sparse at best."
+  },
+  {
+    "w": "Speculative",
+    "pos": "adj.",
+    "pron": "SPEK-yuh-luh-tiv",
+    "def": "Based on conjecture rather than knowledge.",
+    "ex": "Her answer was speculative, not grounded in the source material."
+  },
+  {
+    "w": "Stagnant",
+    "pos": "adj.",
+    "pron": "STAG-nunt",
+    "def": "Not flowing or developing; showing no activity.",
+    "ex": "Her job search felt stagnant until she changed her approach."
+  },
+  {
+    "w": "Stipulate",
+    "pos": "v.",
+    "pron": "STIP-yuh-layt",
+    "def": "To demand or specify as part of an agreement.",
+    "ex": "The contract stipulated a two-week notice period."
+  },
+  {
+    "w": "Strategic",
+    "pos": "adj.",
+    "pron": "struh-TEE-jik",
+    "def": "Carefully designed to serve a particular purpose.",
+    "ex": "She took a strategic approach, applying where her background fit best."
+  },
+  {
+    "w": "Subjective",
+    "pos": "adj.",
+    "pron": "sub-JEK-tiv",
+    "def": "Based on personal opinions rather than facts.",
+    "ex": "A subjective score without reasoning isn't very useful feedback."
+  },
+  {
+    "w": "Substantiate",
+    "pos": "v.",
+    "pron": "sub-STAN-shee-ayt",
+    "def": "To provide evidence to support a claim.",
+    "ex": "She substantiated her score with three specific examples."
+  },
+  {
+    "w": "Superfluous",
+    "pos": "adj.",
+    "pron": "soo-PUR-floo-us",
+    "def": "Unnecessary; more than is needed.",
+    "ex": "Cut anything superfluous from the final draft."
+  },
+  {
+    "w": "Supersede",
+    "pos": "v.",
+    "pron": "soo-per-SEED",
+    "def": "To take the place of; replace.",
+    "ex": "The updated rubric superseded the older guidelines."
+  },
+  {
+    "w": "Surmise",
+    "pos": "v.",
+    "pron": "ser-MYZE",
+    "def": "To suppose something without firm evidence.",
+    "ex": "She surmised the model had misread the date format."
+  },
+  {
+    "w": "Sustain",
+    "pos": "v.",
+    "pron": "suh-STAYN",
+    "def": "To strengthen or support; to keep going over time.",
+    "ex": "A steady routine sustained her motivation over the slow months."
+  },
+  {
+    "w": "Symmetry",
+    "pos": "n.",
+    "pron": "SIM-ih-tree",
+    "def": "Correspondence in size, shape, and arrangement.",
+    "ex": "The rubric's symmetry made it easy to apply consistently."
+  },
+  {
+    "w": "Tactful",
+    "pos": "adj.",
+    "pron": "TAKT-ful",
+    "def": "Having or showing skill in dealing with sensitive matters.",
+    "ex": "She was tactful even when the feedback was mostly critical."
+  },
+  {
+    "w": "Tantamount",
+    "pos": "adj.",
+    "pron": "TAN-tuh-mownt",
+    "def": "Equivalent in seriousness to; virtually the same as.",
+    "ex": "A missed safety flag is tantamount to a failed evaluation."
+  },
+  {
+    "w": "Tedious",
+    "pos": "adj.",
+    "pron": "TEE-dee-us",
+    "def": "Too long, slow, or dull; tiresome.",
+    "ex": "ID verification felt tedious but was worth the wait."
+  },
+  {
+    "w": "Tenuous",
+    "pos": "adj.",
+    "pron": "TEN-yoo-us",
+    "def": "Very weak or slight.",
+    "ex": "The connection between the two claims was tenuous at best."
+  },
+  {
+    "w": "Thorough",
+    "pos": "adj.",
+    "pron": "THUR-oh",
+    "def": "Complete with regard to every detail; careful.",
+    "ex": "A thorough review catches what a quick skim misses."
+  },
+  {
+    "w": "Transient",
+    "pos": "adj.",
+    "pron": "TRAN-zee-ent",
+    "def": "Lasting only for a short time.",
+    "ex": "Early motivation is transient; systems make it last."
+  },
+  {
+    "w": "Ubiquitous",
+    "pos": "adj.",
+    "pron": "yoo-BIK-wih-tus",
+    "def": "Present or found everywhere.",
+    "ex": "Vague job titles are ubiquitous across recruiting platforms."
+  },
+  {
+    "w": "Uncanny",
+    "pos": "adj.",
+    "pron": "un-KAN-ee",
+    "def": "Strange or mysterious in an unsettling way.",
+    "ex": "She had an uncanny instinct for spotting a weak answer."
+  },
+  {
+    "w": "Underscore",
+    "pos": "v.",
+    "pron": "UN-der-skor",
+    "def": "To emphasize the importance of something.",
+    "ex": "The rejection underscored how much her resume needed reworking."
+  },
+  {
+    "w": "Undulate",
+    "pos": "v.",
+    "pron": "UN-juh-layt",
+    "def": "To move with a smooth wavelike motion.",
+    "ex": "Her motivation undulated week to week, so she built a system instead."
+  },
+  {
+    "w": "Unequivocal",
+    "pos": "adj.",
+    "pron": "un-ih-KWIV-uh-kul",
+    "def": "Leaving no doubt; unambiguous.",
+    "ex": "The evidence was unequivocal, so the score was easy to justify."
+  },
+  {
+    "w": "Unfeigned",
+    "pos": "adj.",
+    "pron": "un-FAYND",
+    "def": "Genuine; not pretended.",
+    "ex": "Her unfeigned enthusiasm came through in the interview."
+  },
+  {
+    "w": "Unprecedented",
+    "pos": "adj.",
+    "pron": "un-PRES-ih-den-tid",
+    "def": "Never done or known before.",
+    "ex": "The platform's growth in evaluator demand was unprecedented."
+  },
+  {
+    "w": "Untenable",
+    "pos": "adj.",
+    "pron": "un-TEN-uh-bul",
+    "def": "Not able to be defended or maintained.",
+    "ex": "The original claim became untenable once the data was checked."
+  },
+  {
+    "w": "Validity",
+    "pos": "n.",
+    "pron": "vuh-LID-ih-tee",
+    "def": "The quality of being logically or factually sound.",
+    "ex": "She questioned the validity of the source before citing it."
+  },
+  {
+    "w": "Vehement",
+    "pos": "adj.",
+    "pron": "VEE-uh-ment",
+    "def": "Showing strong feeling; forceful.",
+    "ex": "He was vehement in his defense of the low score."
+  },
+  {
+    "w": "Veracity",
+    "pos": "n.",
+    "pron": "vuh-RAS-ih-tee",
+    "def": "Conformity to facts; accuracy.",
+    "ex": "The rubric's Accurate pillar exists to test veracity."
+  },
+  {
+    "w": "Verify",
+    "pos": "v.",
+    "pron": "VER-ih-fy",
+    "def": "To make sure something is true or accurate.",
+    "ex": "Always verify a claim before scoring it as accurate."
+  },
+  {
+    "w": "Vindicate",
+    "pos": "v.",
+    "pron": "VIN-dih-kayt",
+    "def": "To clear of blame after being suspected wrongly.",
+    "ex": "The follow-up review vindicated her original low score."
+  },
+  {
+    "w": "Visceral",
+    "pos": "adj.",
+    "pron": "VIS-er-ul",
+    "def": "Relating to deep inward feelings rather than reason.",
+    "ex": "Her visceral reaction to the layoff eventually became fuel."
+  },
+  {
+    "w": "Vivid",
+    "pos": "adj.",
+    "pron": "VIV-id",
+    "def": "Producing powerful feelings or clear images in the mind.",
+    "ex": "Her cover letter painted a vivid picture of her career shift."
+  },
+  {
+    "w": "Volatile",
+    "pos": "adj.",
+    "pron": "VOL-uh-tyle",
+    "def": "Liable to change rapidly and unpredictably.",
+    "ex": "Freelance income can be volatile without multiple platforms."
+  },
+  {
+    "w": "Warrant",
+    "pos": "v.",
+    "pron": "WOR-unt",
+    "def": "To justify or necessitate a certain action.",
+    "ex": "The severity of the error warranted the lowest possible score."
+  },
+  {
+    "w": "Advocate",
+    "pos": "v./n.",
+    "pron": "AD-vuh-kut",
+    "def": "To publicly support or recommend; a supporter.",
+    "ex": "She became an advocate for structured feedback over vague praise."
+  },
+  {
+    "w": "Aggregate",
+    "pos": "v./n.",
+    "pron": "AG-rih-git",
+    "def": "To combine into a whole; a total amount.",
+    "ex": "She aggregated three months of scores into one report."
+  },
+  {
+    "w": "Align",
+    "pos": "v.",
+    "pron": "uh-LYNE",
+    "def": "To bring into correct or appropriate relative position.",
+    "ex": "Her resume finally aligned with the job description's language."
+  },
+  {
+    "w": "Anchor",
+    "pos": "v./n.",
+    "pron": "ANG-ker",
+    "def": "To provide stability or a fixed point of reference.",
+    "ex": "One strong example anchored the rest of her portfolio."
+  },
+  {
+    "w": "Articulate",
+    "pos": "v./adj.",
+    "pron": "ar-TIK-yuh-layt",
+    "def": "To express clearly; well spoken.",
+    "ex": "She articulated her reasoning in one clean paragraph."
+  },
+  {
+    "w": "Aspire",
+    "pos": "v.",
+    "pron": "uh-SPYRE",
+    "def": "To direct one's hopes toward achieving something.",
+    "ex": "She aspired to a role that used both her domains of expertise."
+  },
+  {
+    "w": "Assess",
+    "pos": "v.",
+    "pron": "uh-SES",
+    "def": "To evaluate or estimate the nature of something.",
+    "ex": "She learned to assess tone as carefully as factual accuracy."
+  },
+  {
+    "w": "Attest",
+    "pos": "v.",
+    "pron": "uh-TEST",
+    "def": "To provide evidence for; to certify.",
+    "ex": "Her portfolio attested to months of consistent practice."
+  },
+  {
+    "w": "Benchmark",
+    "pos": "n.",
+    "pron": "BENCH-mark",
+    "def": "A standard against which things are compared.",
+    "ex": "She used the highest-scoring sample as her benchmark."
+  },
+  {
+    "w": "Buffer",
+    "pos": "n./v.",
+    "pron": "BUF-er",
+    "def": "Something that protects against impact; to cushion.",
+    "ex": "Savings gave her a buffer during the slow months of transition."
+  },
+  {
+    "w": "Calibrated",
+    "pos": "adj.",
+    "pron": "KAL-ih-bray-tid",
+    "def": "Carefully adjusted for accuracy.",
+    "ex": "Her sense of tone became more calibrated with practice."
+  },
+  {
+    "w": "Capacity",
+    "pos": "n.",
+    "pron": "kuh-PAS-ih-tee",
+    "def": "The ability to do something; maximum output.",
+    "ex": "She had the capacity to take on two platforms at once."
+  },
+  {
+    "w": "Catalyze",
+    "pos": "v.",
+    "pron": "KAT-uh-lyze",
+    "def": "To cause or accelerate a reaction or process.",
+    "ex": "One good mentor call catalyzed months of progress."
+  },
+  {
+    "w": "Coalesce",
+    "pos": "v.",
+    "pron": "koh-uh-LES",
+    "def": "To come together to form one whole.",
+    "ex": "Her scattered notes finally coalesced into a real curriculum."
+  },
+  {
+    "w": "Commence",
+    "pos": "v.",
+    "pron": "kuh-MENS",
+    "def": "To begin.",
+    "ex": "The onboarding process commenced the moment her ID cleared."
+  },
+  {
+    "w": "Compelling",
+    "pos": "adj.",
+    "pron": "kum-PEL-ing",
+    "def": "Evoking interest or admiration in a powerful way.",
+    "ex": "A compelling cover letter tells a story, not just a list of facts."
+  },
+  {
+    "w": "Comprehensive",
+    "pos": "adj.",
+    "pron": "kom-prih-HEN-siv",
+    "def": "Complete; including all elements.",
+    "ex": "A comprehensive rubric leaves less room for inconsistent scoring."
+  },
+  {
+    "w": "Concise",
+    "pos": "adj.",
+    "pron": "kun-SYSE",
+    "def": "Giving information clearly in few words.",
+    "ex": "Concise feedback is easier to act on than a long essay."
+  },
+  {
+    "w": "Consolidated",
+    "pos": "adj.",
+    "pron": "kun-SOL-ih-day-tid",
+    "def": "Combined into a single unit.",
+    "ex": "Her consolidated tracker replaced four separate spreadsheets."
+  },
+  {
+    "w": "Contextualize",
+    "pos": "v.",
+    "pron": "kun-TEKS-choo-uh-lyze",
+    "def": "To place in context to aid understanding.",
+    "ex": "She contextualized her healthcare background for a tech-adjacent role."
+  },
+  {
+    "w": "Contingency",
+    "pos": "n.",
+    "pron": "kun-TIN-jun-see",
+    "def": "A future event that may or may not happen; a backup plan.",
+    "ex": "She had a contingency plan if the first platform fell through."
+  },
+  {
+    "w": "Corroborating",
+    "pos": "adj.",
+    "pron": "kuh-ROB-uh-ray-ting",
+    "def": "Confirming or supporting a claim.",
+    "ex": "She found corroborating evidence before finalizing her review."
+  },
+  {
+    "w": "Credibility",
+    "pos": "n.",
+    "pron": "kred-ih-BIL-ih-tee",
+    "def": "The quality of being trusted and believed in.",
+    "ex": "Specific numbers gave her resume more credibility than adjectives did."
+  },
+  {
+    "w": "Cultivate",
+    "pos": "v.",
+    "pron": "KUL-tih-vayt",
+    "def": "To try to acquire or develop a quality or skill.",
+    "ex": "She cultivated a daily habit of reviewing model responses."
+  },
+  {
+    "w": "Curate",
+    "pos": "v.",
+    "pron": "kyoor-AYT",
+    "def": "To select, organize, and present carefully.",
+    "ex": "She curated only her strongest three projects for the portfolio."
+  },
+  {
+    "w": "Decisive",
+    "pos": "adj.",
+    "pron": "dih-SY-siv",
+    "def": "Settling an issue; showing determination.",
+    "ex": "A decisive answer beats a hedged one when the evidence is clear."
+  },
+  {
+    "w": "Dedicated",
+    "pos": "adj.",
+    "pron": "DED-ih-kay-tid",
+    "def": "Devoted to a task or purpose.",
+    "ex": "Her dedicated hour each morning made the biggest difference."
+  },
+  {
+    "w": "Delegate",
+    "pos": "v.",
+    "pron": "DEL-ih-gayt",
+    "def": "To entrust a task to another person.",
+    "ex": "She delegated the design work so she could focus on content."
+  },
+  {
+    "w": "Demarcate",
+    "pos": "v.",
+    "pron": "DEE-mar-kayt",
+    "def": "To set the boundaries of.",
+    "ex": "The rubric clearly demarcated what counted as a safety flag."
+  },
+  {
+    "w": "Deploy",
+    "pos": "v.",
+    "pron": "dih-PLOY",
+    "def": "To bring into effective action.",
+    "ex": "She deployed her staffing knowledge in a completely new context."
+  },
+  {
+    "w": "Diagnostic",
+    "pos": "adj.",
+    "pron": "dy-ug-NOS-tik",
+    "def": "Concerned with identifying the nature of a problem.",
+    "ex": "She treated every rejection as diagnostic feedback, not failure."
+  },
+  {
+    "w": "Differentiate",
+    "pos": "v.",
+    "pron": "dif-uh-REN-shee-ayt",
+    "def": "To recognize or express what makes something distinct.",
+    "ex": "She had to differentiate her resume from hundreds of similar ones."
+  },
+  {
+    "w": "Diversify",
+    "pos": "v.",
+    "pron": "dih-VUR-sih-fy",
+    "def": "To make more varied.",
+    "ex": "She diversified her income across two evaluation platforms."
+  },
+  {
+    "w": "Efficacy",
+    "pos": "n.",
+    "pron": "EF-ih-kuh-see",
+    "def": "The ability to produce a desired result.",
+    "ex": "She questioned the efficacy of applying without any tailoring."
+  },
+  {
+    "w": "Elevate",
+    "pos": "v.",
+    "pron": "EL-uh-vayt",
+    "def": "To raise to a more important or impressive level.",
+    "ex": "One strong metric elevated the whole bullet point."
+  },
+  {
+    "w": "Elicit",
+    "pos": "v.",
+    "pron": "ih-LIS-it",
+    "def": "To draw out a response or reaction.",
+    "ex": "A good prompt elicits a clear, specific answer."
+  },
+  {
+    "w": "Emphasize",
+    "pos": "v.",
+    "pron": "EM-fuh-syze",
+    "def": "To give special importance to.",
+    "ex": "She rewrote her summary to emphasize systems thinking."
+  },
+  {
+    "w": "Empower",
+    "pos": "v.",
+    "pron": "em-POW-er",
+    "def": "To give someone the authority or confidence to do something.",
+    "ex": "Clear expectations empowered her to work independently."
+  },
+  {
+    "w": "Enact",
+    "pos": "v.",
+    "pron": "ih-NAKT",
+    "def": "To put into action or law.",
+    "ex": "She enacted a simple daily checklist before every submission."
+  },
+  {
+    "w": "Encompass",
+    "pos": "v.",
+    "pron": "en-KUM-pus",
+    "def": "To include comprehensively.",
+    "ex": "Her new role encompassed both compliance and evaluation work."
+  },
+  {
+    "w": "Endorse",
+    "pos": "v.",
+    "pron": "en-DORS",
+    "def": "To declare one's approval of.",
+    "ex": "Her old manager endorsed her transition without hesitation."
+  },
+  {
+    "w": "Enrich",
+    "pos": "v.",
+    "pron": "en-RICH",
+    "def": "To improve the quality of.",
+    "ex": "Real examples enriched what would've been a dry explanation."
+  },
+  {
+    "w": "Ensure",
+    "pos": "v.",
+    "pron": "en-SHOOR",
+    "def": "To make certain something will happen.",
+    "ex": "A checklist ensured she never missed a rubric criterion."
+  },
+  {
+    "w": "Envision",
+    "pos": "v.",
+    "pron": "en-VIZH-un",
+    "def": "To imagine as a future possibility.",
+    "ex": "She envisioned a full career shift a year before she made it."
+  },
+  {
+    "w": "Establish",
+    "pos": "v.",
+    "pron": "ih-STAB-lish",
+    "def": "To set up on a firm or permanent basis.",
+    "ex": "She established a daily rhythm before increasing her workload."
+  },
+  {
+    "w": "Evaluate",
+    "pos": "v.",
+    "pron": "ih-VAL-yoo-ayt",
+    "def": "To judge or assess the value of something.",
+    "ex": "She had to evaluate the response using all four rubric pillars."
+  },
+  {
+    "w": "Evoke",
+    "pos": "v.",
+    "pron": "ih-VOHK",
+    "def": "To bring a feeling, memory, or image into the mind.",
+    "ex": "The story evoked genuine empathy from the panel."
+  },
+  {
+    "w": "Exemplify",
+    "pos": "v.",
+    "pron": "ig-ZEM-pluh-fy",
+    "def": "To be a typical example of.",
+    "ex": "Her resume exemplified the human but professional tone she wanted."
+  },
+  {
+    "w": "Expedite",
+    "pos": "v.",
+    "pron": "EK-spih-dyte",
+    "def": "To make a process happen faster.",
+    "ex": "A clear checklist expedited her review process considerably."
+  },
+  {
+    "w": "Extrapolate",
+    "pos": "v.",
+    "pron": "ik-STRAP-uh-layt",
+    "def": "To extend a conclusion based on known information.",
+    "ex": "She extrapolated the trend from just two data points."
+  },
+  {
+    "w": "Foster",
+    "pos": "v.",
+    "pron": "FOS-ter",
+    "def": "To encourage the development of.",
+    "ex": "Daily feedback fostered real improvement within weeks."
+  },
+  {
+    "w": "Foundational",
+    "pos": "adj.",
+    "pron": "fown-DAY-shuh-nul",
+    "def": "Serving as a basis; fundamental.",
+    "ex": "A foundational understanding of the rubric came before speed."
+  },
+  {
+    "w": "Framework",
+    "pos": "n.",
+    "pron": "FRAYM-wurk",
+    "def": "A basic structure underlying a system or concept.",
+    "ex": "She built her own framework for reviewing model responses."
+  },
+  {
+    "w": "Fundamental",
+    "pos": "adj.",
+    "pron": "fun-duh-MEN-tul",
+    "def": "Forming a necessary base or core.",
+    "ex": "Accuracy is a fundamental part of any evaluation."
+  },
+  {
+    "w": "Generate",
+    "pos": "v.",
+    "pron": "JEN-er-ayt",
+    "def": "To produce or create.",
+    "ex": "A single strong project generated three referrals."
+  },
+  {
+    "w": "Guideline",
+    "pos": "n.",
+    "pron": "GYDE-lyne",
+    "def": "A general rule or principle for action.",
+    "ex": "She followed the platform's guideline exactly on her first submission."
+  },
+  {
+    "w": "Hierarchy",
+    "pos": "n.",
+    "pron": "HY-er-ar-kee",
+    "def": "A system in which things are ranked according to importance.",
+    "ex": "The rubric had a clear hierarchy, with safety at the top."
+  },
+  {
+    "w": "Impactful",
+    "pos": "adj.",
+    "pron": "im-PAKT-ful",
+    "def": "Having a strong effect or influence.",
+    "ex": "She rewrote every bullet to be more impactful and specific."
+  },
+  {
+    "w": "Implement",
+    "pos": "v.",
+    "pron": "IM-pluh-ment",
+    "def": "To put a decision or plan into effect.",
+    "ex": "She implemented the new checklist starting the very next day."
+  },
+  {
+    "w": "Incentivize",
+    "pos": "v.",
+    "pron": "in-SEN-tih-vyze",
+    "def": "To motivate or encourage someone to act.",
+    "ex": "A small daily reward incentivized her to keep practicing."
+  },
+  {
+    "w": "Incremental",
+    "pos": "adj.",
+    "pron": "in-kruh-MEN-tul",
+    "def": "Occurring in small stages or steps.",
+    "ex": "Incremental progress felt slow, but it added up fast."
+  },
+  {
+    "w": "Indicative",
+    "pos": "adj.",
+    "pron": "in-DIK-uh-tiv",
+    "def": "Serving as a sign or indication.",
+    "ex": "One weak answer wasn't indicative of the whole application."
+  },
+  {
+    "w": "Initiative",
+    "pos": "n.",
+    "pron": "ih-NISH-uh-tiv",
+    "def": "The ability to assess and act independently.",
+    "ex": "She showed initiative by building her own practice curriculum."
+  },
+  {
+    "w": "Instrumental",
+    "pos": "adj.",
+    "pron": "in-struh-MEN-tul",
+    "def": "Serving as a means to an important end.",
+    "ex": "Feedback from mentors was instrumental in her improvement."
+  },
+  {
+    "w": "Integrate",
+    "pos": "v.",
+    "pron": "IN-tih-grayt",
+    "def": "To combine parts into a whole.",
+    "ex": "She integrated her healthcare knowledge into her evaluation work."
+  },
+  {
+    "w": "Justify",
+    "pos": "v.",
+    "pron": "JUS-tih-fy",
+    "def": "To show or prove to be right or reasonable.",
+    "ex": "Every score needs to be justified with specific evidence."
+  },
+  {
+    "w": "Longevity",
+    "pos": "n.",
+    "pron": "lon-JEV-ih-tee",
+    "def": "The length of time something lasts or works.",
+    "ex": "A sustainable pace mattered more than speed for longevity."
+  },
+  {
+    "w": "Magnitude",
+    "pos": "n.",
+    "pron": "MAG-nih-tood",
+    "def": "The great size or extent of something.",
+    "ex": "She hadn't grasped the full magnitude of the platform's demand."
+  },
+  {
+    "w": "Mainstay",
+    "pos": "n.",
+    "pron": "MAYN-stay",
+    "def": "A thing that is a chief support.",
+    "ex": "Daily practice became the mainstay of her improvement plan."
+  },
+  {
+    "w": "Milestone",
+    "pos": "n.",
+    "pron": "MYLE-stohn",
+    "def": "A significant point in development.",
+    "ex": "Passing ID verification was a small but real milestone."
+  },
+  {
+    "w": "Nuanced",
+    "pos": "adj.",
+    "pron": "NOO-anst",
+    "def": "Characterized by subtle distinctions.",
+    "ex": "Her nuanced feedback went beyond a simple pass or fail."
+  },
+  {
+    "w": "Outline",
+    "pos": "v./n.",
+    "pron": "OWT-lyne",
+    "def": "To give the main features of something.",
+    "ex": "She outlined her whole application strategy before starting."
+  },
+  {
+    "w": "Pinpoint",
+    "pos": "v.",
+    "pron": "PIN-poynt",
+    "def": "To identify exactly.",
+    "ex": "She pinpointed the exact sentence where the model's logic broke."
+  },
+  {
+    "w": "Precision",
+    "pos": "n.",
+    "pron": "prih-SIZH-un",
+    "def": "The quality of being exact and accurate.",
+    "ex": "Precision mattered more than speed in her early evaluations."
+  },
+  {
+    "w": "Prioritize",
+    "pos": "v.",
+    "pron": "pry-OR-ih-tyze",
+    "def": "To arrange in order of importance.",
+    "ex": "She prioritized safety flags above stylistic feedback."
+  },
+  {
+    "w": "Rationalize",
+    "pos": "v.",
+    "pron": "RASH-uh-nuh-lyze",
+    "def": "To find logical reasons for a behavior or attitude.",
+    "ex": "She stopped trying to rationalize a weak answer and just fixed it."
+  },
+  {
+    "w": "Realign",
+    "pos": "v.",
+    "pron": "ree-uh-LYNE",
+    "def": "To adjust or position again.",
+    "ex": "She realigned her weekly schedule around her most focused hours."
+  },
+  {
+    "w": "Recalibration",
+    "pos": "n.",
+    "pron": "ree-kal-ih-BRAY-shun",
+    "def": "The process of adjusting something again for accuracy.",
+    "ex": "A quick recalibration after feedback saved her hours later."
+  },
+  {
+    "w": "Reframe",
+    "pos": "v.",
+    "pron": "ree-FRAYM",
+    "def": "To express a concept in a different way.",
+    "ex": "She reframed her career gap as a period of deliberate upskilling."
+  },
+  {
+    "w": "Streamline",
+    "pos": "v.",
+    "pron": "STREEM-lyne",
+    "def": "To make a process more efficient by simplifying it.",
+    "ex": "She streamlined her application process into a repeatable checklist."
+  },
+  {
+    "w": "Systematic",
+    "pos": "adj.",
+    "pron": "sis-tuh-MAT-ik",
+    "def": "Done according to a fixed plan; methodical.",
+    "ex": "A systematic review caught errors a casual skim missed."
+  },
+  {
+    "w": "Trajectory",
+    "pos": "n.",
+    "pron": "truh-JEK-tuh-ree",
+    "def": "The path followed by something moving toward a goal.",
+    "ex": "Her career trajectory shifted entirely within a year."
+  },
+  {
+    "w": "Transformative",
+    "pos": "adj.",
+    "pron": "trans-FOR-muh-tiv",
+    "def": "Causing a marked change.",
+    "ex": "The feedback loop was transformative for her evaluation skills."
+  },
+  {
+    "w": "Trigger",
+    "pos": "v.",
+    "pron": "TRIG-er",
+    "def": "To cause something to happen.",
+    "ex": "One flagged response triggered a full review of the batch."
+  },
+  {
+    "w": "Underpin",
+    "pos": "v.",
+    "pron": "un-der-PIN",
+    "def": "To support or form the basis of.",
+    "ex": "Real examples underpinned every claim in her cover letter."
+  },
+  {
+    "w": "Uphold",
+    "pos": "v.",
+    "pron": "up-HOHLD",
+    "def": "To confirm or support something in the face of a challenge.",
+    "ex": "She upheld her original score after a careful second review."
+  },
+  {
+    "w": "Utilize",
+    "pos": "v.",
+    "pron": "YOO-tih-lyze",
+    "def": "To make practical and effective use of.",
+    "ex": "She utilized her sales background to write a stronger pitch."
+  },
+  {
+    "w": "Adaptable",
+    "pos": "adj.",
+    "pron": "uh-DAP-tuh-bul",
+    "def": "Able to adjust to new conditions.",
+    "ex": "An adaptable mindset made switching platforms much easier."
+  },
+  {
+    "w": "Adjacent",
+    "pos": "adj.",
+    "pron": "uh-JAY-sent",
+    "def": "Next to or adjoining something else.",
+    "ex": "She looked for roles adjacent to her core expertise."
+  },
+  {
+    "w": "Aptitude",
+    "pos": "n.",
+    "pron": "AP-tih-tood",
+    "def": "A natural ability to do something.",
+    "ex": "She showed a real aptitude for spotting subtle bias."
+  },
+  {
+    "w": "Baseline",
+    "pos": "n.",
+    "pron": "BAYS-lyne",
+    "def": "A minimum or starting point for comparison.",
+    "ex": "Her first evaluations became the baseline she measured growth against."
+  },
+  {
+    "w": "Bandwidth",
+    "pos": "n.",
+    "pron": "BAND-width",
+    "def": "The capacity to handle a particular amount of work.",
+    "ex": "She didn't have the bandwidth for a third platform yet."
+  },
+  {
+    "w": "Breadth",
+    "pos": "n.",
+    "pron": "BREDTH",
+    "def": "The extent or scope of something.",
+    "ex": "Her breadth of healthcare knowledge made her stand out."
+  },
+  {
+    "w": "Composure",
+    "pos": "n.",
+    "pron": "kum-POH-zher",
+    "def": "The state of being calm and in control.",
+    "ex": "She kept her composure even when the interview ran long."
+  },
+  {
+    "w": "Cornerstone",
+    "pos": "n.",
+    "pron": "KOR-ner-stohn",
+    "def": "A basic and essential part.",
+    "ex": "Clear rubric criteria were the cornerstone of fair grading."
+  },
+  {
+    "w": "Cumulative",
+    "pos": "adj.",
+    "pron": "KYOO-myuh-luh-tiv",
+    "def": "Increasing by successive additions.",
+    "ex": "The cumulative effect of daily practice was hard to overstate."
+  },
+  {
+    "w": "Deliberation",
+    "pos": "n.",
+    "pron": "dih-lib-er-AY-shun",
+    "def": "Long and careful consideration.",
+    "ex": "After deliberation, she chose the role with more autonomy."
+  },
+  {
+    "w": "Discretionary",
+    "pos": "adj.",
+    "pron": "dih-SKRESH-uh-ner-ee",
+    "def": "Available for use at one's own judgment.",
+    "ex": "She had discretionary time to build her portfolio each week."
+  },
+  {
+    "w": "Empathetic",
+    "pos": "adj.",
+    "pron": "em-puh-THET-ik",
+    "def": "Showing an ability to understand others' feelings.",
+    "ex": "An empathetic tone made her feedback easier to receive."
+  },
+  {
+    "w": "Groundwork",
+    "pos": "n.",
+    "pron": "GROWND-wurk",
+    "def": "Preliminary or basic work.",
+    "ex": "Months of quiet groundwork made the transition look sudden to outsiders."
+  },
+  {
+    "w": "Impetus",
+    "pos": "n.",
+    "pron": "IM-pih-tus",
+    "def": "A force that drives something forward.",
+    "ex": "The rejection became the impetus for a total resume rebuild."
+  },
+  {
+    "w": "Inclination",
+    "pos": "n.",
+    "pron": "in-klih-NAY-shun",
+    "def": "A natural tendency to act a certain way.",
+    "ex": "Her inclination was to over-explain, so she practiced cutting it down."
+  }
+];
+
+  function dayOfYear(date) {
+    var start = new Date(date.getFullYear(), 0, 0);
+    var diff = date - start;
+    return Math.floor(diff / 86400000);
+  }
+
+  function posClass(pos) {
+    var p = pos.toLowerCase();
+    if (p.indexOf('n.') === 0 || p.indexOf('/n.') > -1) return 'pos-noun';
+    if (p.indexOf('v.') === 0) return 'pos-verb';
+    if (p.indexOf('adj.') === 0) return 'pos-adjective';
+    if (p.indexOf('adv.') === 0) return 'pos-adverb';
+    if (p.indexOf('prep.') === 0) return 'pos-preposition';
+    if (p.indexOf('conj.') === 0) return 'pos-conjunction';
+    if (p.indexOf('pron.') === 0) return 'pos-pronoun';
+    if (p.indexOf('interj.') === 0) return 'pos-interjection';
+    return 'pos-other';
+  }
+
+  var today = new Date();
+  var doy = dayOfYear(today);
+  var pick = WORDS[(doy - 1) % WORDS.length];
+
+  document.getElementById('eyebrow').textContent = 'Word of the Day — Day ' + doy + ' of 365';
+
+  var wordEl = document.getElementById('word');
+  wordEl.textContent = pick.w;
+  wordEl.classList.add(posClass(pick.pos));
+
+  document.getElementById('pos').textContent = pick.pos;
+  document.getElementById('pron').textContent = '/' + pick.pron + '/';
+  document.getElementById('definition').textContent = pick.def;
+  document.getElementById('example').textContent = '“' + pick.ex + '”';
+</script>
+
+</body>
+</html>
