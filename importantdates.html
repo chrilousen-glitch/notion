@@ -117,10 +117,4 @@
 
     function applyRainbowText(text) {
       return text.split('').map((char, index) => {
-        if (char === ' ') return ' ';
-        const color = rainbowColors[index % rainbowColors.length];
-        return `<span style="color: ${color};">${char}</span>`;
-      }).join('');
-    }
-
-    function renderEvents() {
+        if (char === ' ') return '
