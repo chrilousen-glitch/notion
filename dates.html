@@ -17,7 +17,7 @@
     @media (prefers-color-scheme: dark) {
       :root {
         --bg-color: #191919;
-        --text-color: #rgba(255, 255, 255, 0.81);
+        --text-color: rgba(255, 255, 255, 0.81);
         --card-bg: #202020;
         --border-color: #2f2f2f;
         --accent-color: #52baed;
@@ -90,16 +90,37 @@
 </head>
 <body>
 
-  <h2>📅 Upcoming Dates</h2>
+  <h2 id="heading">📅 Upcoming Dates</h2>
   <div id="events" class="events-list"></div>
 
   <script>
     // EDIT YOUR DATES HERE (Format: 'MM-DD')
     const dates = [
-      { name: "Mom's Birthday", date: "10-24" },
-      { name: "Dad's Birthday", date: "12-15" },
-      { name: "New Year's Eve", date: "12-31" }
+      { name: "CHRISTI'S BIRTHDAY", date: "03-16" },
+      { name: "Mom's Birthday", date: "10-19" },
+      { name: "Dad's Birthday", date: "10-21" },
+      { name: "Jennifer's Birthday", date: "10-23" },
+      { name: "Allison's Birthday", date: "11-10" },
+      { name: "Joe's Birthday", date: "12-01" }
     ];
+
+    const rainbowColors = [
+      '#FF4B4B', // Red
+      '#FF851B', // Orange
+      '#FFDC00', // Yellow
+      '#2ECC40', // Green
+      '#0074D9', // Blue
+      '#B10DC9'  // Purple
+    ];
+
+    // Helper function to color each letter individually
+    function applyRainbowText(text) {
+      return text.split('').map((char, index) => {
+        if (char === ' ') return ' ';
+        const color = rainbowColors[index % rainbowColors.length];
+        return `<span style="color: ${color};">${char}</span>`;
+      }).join('');
+    }
 
     function getNextOccurrence(monthDayStr) {
       const today = new Date();
@@ -123,6 +144,9 @@
     }
 
     function renderEvents() {
+      // Apply rainbow styling to header text
+      document.getElementById('heading').innerHTML = `📅 ${applyRainbowText('Upcoming Dates')}`;
+
       const container = document.getElementById('events');
 
       const processed = dates.map(event => {
@@ -149,10 +173,12 @@
           badgeText = 'Tomorrow!';
         }
 
+        const rainbowName = applyRainbowText(event.name);
+
         return `
           <div class="event-card">
             <div class="event-info">
-              <span class="event-name">${event.name}</span>
+              <span class="event-name">${rainbowName}</span>
               <span class="event-date">${dateFormatted}</span>
             </div>
             <span class="${badgeClass}">${badgeText}</span>
