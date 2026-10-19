@@ -117,4 +117,48 @@
 
     function applyRainbowText(text) {
       return text.split('').map((char, index) => {
-        if (char === ' ') return '
+        if (char === ' ') return ' ';
+        const color = rainbowColors[index % rainbowColors.length];
+        return `<span style="color: ${color};">${char}</span>`;
+      }).join('');
+    }
+
+    function renderEvents() {
+      document.getElementById('heading').innerHTML = `${applyRainbowText("TODAY:")}`;
+
+      const container = document.getElementById('events');
+      const today = new Date();
+      const currentMonth = String(today.getMonth() + 1).padStart(2, '0');
+      const currentDay = String(today.getDate()).padStart(2, '0');
+      const todayStr = `${currentMonth}-${currentDay}`;
+
+      const todaysEvents = dates.filter(event => event.date === todayStr);
+
+      if (todaysEvents.length === 0) {
+        container.innerHTML = `<div class="empty-state">no important dates</div>`;
+        return;
+      }
+
+      container.innerHTML = todaysEvents.map(event => {
+        const rainbowName = applyRainbowText(event.name);
+        const dateFormatted = today.toLocaleDateString('en-US', {
+          month: 'short',
+          day: 'numeric'
+        });
+
+        return `
+          <div class="event-card">
+            <div class="event-info">
+              <span class="event-name">${rainbowName}</span>
+              <span class="event-date">${dateFormatted}</span>
+            </div>
+            <span class="days-badge">Today! 🎉</span>
+          </div>
+        `;
+      }).join('');
+    }
+
+    renderEvents();
+  </script>
+</body>
+</html>
