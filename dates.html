@@ -145,7 +145,7 @@
 
     function renderEvents() {
       // Apply rainbow styling to header text
-      document.getElementById('heading').innerHTML = `${applyRainbowText('Upcoming Dates')}`;
+      document.getElementById('heading').innerHTML = `📅 ${applyRainbowText('Upcoming Dates')}`;
 
       const container = document.getElementById('events');
 
@@ -180,3 +180,14 @@
             <div class="event-info">
               <span class="event-name">${rainbowName}</span>
               <span class="event-date">${dateFormatted}</span>
+            </div>
+            <span class="${badgeClass}">${badgeText}</span>
+          </div>
+        `;
+      }).join('');
+    }
+
+    renderEvents();
+  </script>
+</body>
+</html>
