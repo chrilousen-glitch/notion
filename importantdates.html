@@ -30,12 +30,16 @@
       color: var(--text-color);
       margin: 0;
       padding: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
     }
 
     h2 {
-      font-size: 25px;
+      font-size: 30px;
       margin-top: 0;
-      margin-bottom: 8px;
+      margin-bottom: 12px;
       font-weight: 700;
       display: inline-block;
       border-bottom: 2px solid currentColor;
@@ -45,24 +49,27 @@
     .events-list {
       display: flex;
       flex-direction: column;
+      align-items: center;
       gap: 4px;
+      width: 100%;
     }
 
     .event-card {
       background-color: var(--card-bg);
       border: 1px solid var(--border-color);
       border-radius: 4px;
-      padding: 4px 8px;
+      padding: 4px 12px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      max-width: fit-content;
       gap: 16px;
+      margin: 0 auto;
     }
 
     .event-info {
       display: flex;
       flex-direction: column;
+      align-items: center;
     }
 
     .event-name {
