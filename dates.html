@@ -25,7 +25,7 @@
     }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-family: "Courier New", Courier, monospace;
       background-color: var(--bg-color);
       color: var(--text-color);
       margin: 0;
@@ -64,7 +64,7 @@
     }
 
     .event-name {
-      font-weight: 500;
+      font-weight: 700;
       font-size: 0.95rem;
     }
 
@@ -97,11 +97,11 @@
     // EDIT YOUR DATES HERE (Format: 'MM-DD')
     const dates = [
       { name: "CHRISTI'S BIRTHDAY", date: "03-16" },
-      { name: "Mom's Birthday", date: "10-19" },
-      { name: "Dad's Birthday", date: "10-21" },
-      { name: "Jennifer's Birthday", date: "10-23" },
-      { name: "Allison's Birthday", date: "11-10" },
-      { name: "Joe's Birthday", date: "12-01" }
+      { name: "MOM'S BIRTHDAY", date: "10-19" },
+      { name: "DAD'S BIRTHDAY", date: "10-21" },
+      { name: "JENNIFER'S BIRTHDAY", date: "10-23" },
+      { name: "ALLISON'S BIRTHDAY", date: "11-10" },
+      { name: "JOE'S BIRTHDAY", date: "12-01" }
     ];
 
     const rainbowColors = [
@@ -180,14 +180,3 @@
             <div class="event-info">
               <span class="event-name">${rainbowName}</span>
               <span class="event-date">${dateFormatted}</span>
-            </div>
-            <span class="${badgeClass}">${badgeText}</span>
-          </div>
-        `;
-      }).join('');
-    }
-
-    renderEvents();
-  </script>
-</body>
-</html>
