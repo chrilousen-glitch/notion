@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Upcoming Dates</title>
+  <style>
+    :root {
+      --bg-color: #ffffff;
+      --text-color: #37352f;
+      --card-bg: #f7f6f3;
+      --border-color: #e9e9e8;
+      --accent-color: #2eaadc;
+    }
+
+    /* Automatic Dark Mode matching Notion */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg-color: #191919;
+        --text-color: #rgba(255, 255, 255, 0.81);
+        --card-bg: #202020;
+        --border-color: #2f2f2f;
+        --accent-color: #52baed;
+      }
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      margin: 0;
+      padding: 16px;
+    }
+
+    h2 {
+      font-size: 1.1rem;
+      margin-top: 0;
+      margin-bottom: 12px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .events-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .event-card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      padding: 10px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .event-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .event-name {
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+
+    .event-date {
+      font-size: 0.8rem;
+      opacity: 0.7;
+    }
+
+    .days-badge {
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 4px 8px;
+      border-radius: 4px;
+      background-color: rgba(46, 170, 220, 0.15);
+      color: var(--accent-color);
+    }
+
+    .today {
+      background-color: rgba(255, 99, 71, 0.15);
+      color: #ff6347;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>📅 Upcoming Dates</h2>
+  <div id="events" class="events-list"></div>
+
+  <script>
+    // EDIT YOUR DATES HERE (Format: 'MM-DD')
+    const dates = [
+      { name: "Mom's Birthday", date: "10-24" },
+      { name: "Dad's Birthday", date: "12-15" },
+      { name: "New Year's Eve", date: "12-31" }
+    ];
+
+    function getNextOccurrence(monthDayStr) {
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+
+      const [month, day] = monthDayStr.split('-').map(Number);
+      let targetYear = today.getFullYear();
+      let targetDate = new Date(targetYear, month - 1, day);
+
+      if (targetDate < today) {
+        targetDate.setFullYear(targetYear + 1);
+      }
+
+      const diffTime = targetDate - today;
+      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+      return {
+        targetDate,
+        daysLeft: diffDays
+      };
+    }
+
+    function renderEvents() {
+      const container = document.getElementById('events');
+
+      const processed = dates.map(event => {
+        const info = getNextOccurrence(event.date);
+        return { ...event, ...info };
+      });
+
+      // Sort by soonest date
+      processed.sort((a, b) => a.daysLeft - b.daysLeft);
+
+      container.innerHTML = processed.map(event => {
+        const dateFormatted = event.targetDate.toLocaleDateString('en-US', {
+          month: 'short',
+          day: 'numeric'
+        });
+
+        let badgeText = `${event.daysLeft} days left`;
+        let badgeClass = 'days-badge';
+
+        if (event.daysLeft === 0) {
+          badgeText = 'Today! 🎉';
+          badgeClass += ' today';
+        } else if (event.daysLeft === 1) {
+          badgeText = 'Tomorrow!';
+        }
+
+        return `
+          <div class="event-card">
+            <div class="event-info">
+              <span class="event-name">${event.name}</span>
+              <span class="event-date">${dateFormatted}</span>
+            </div>
+            <span class="${badgeClass}">${badgeText}</span>
+          </div>
+        `;
+      }).join('');
+    }
+
+    renderEvents();
+  </script>
+</body>
+</html>
